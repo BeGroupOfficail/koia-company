@@ -101,13 +101,13 @@ export default function ExecutionProcess() {
       /> */}
 
       <div className="relative max-w-[1550px] mx-auto">
-        <RiskManagement />
-        <Divider />
-        <QualityControl />
-        <Divider />
         <ExecutionStandard />
         <Divider />
         <StepByStepExecution />
+        <Divider />
+        <QualityControl />
+        <RiskManagement />
+        <Divider />
       </div>
     </section>
   );
