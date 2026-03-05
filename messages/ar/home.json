@@ -3,7 +3,7 @@
   "About": "لماذا KOIA",
   "Contact": "اتصل بنا",
   "Services": "الخدمات",
-  "Projects": "أعمال مختارة",
+  "Projects": "المختارة",
   "Execution Process": "عملية التنفيذ",
   "Fit-Out & Execution": "التشطيبات والتنفيذ",
   "Project Management": "إدارة المشاريع",
@@ -19,7 +19,7 @@
   "OUR": "خدماتنا",
   "SERVICES": "الخدمات",
   "Portfolio": "المعرض",
-  "Selected": "المميزة",
+  "Selected": "الأعمال",
   "View Projects": "عرض المشاريع",
   "Ready to bring your project to life? Reach inOut and lets discusshow we can help": "هل أنت مستعد لتحويل مشروعك إلى حقيقة؟ تواصل معنا وسنناقش كيف يمكننا مساعدتك",
   "PROJECTS": "المشاريع",
@@ -58,5 +58,13 @@
   "Collaborations": "تعاون",
   "Business Clients Reached": "عميل تجاري تم الوصول إليه",
   "Projects Per Year": "مشاريع سنوياً",
-  "Footer-Description": "تقديم تشطيبات داخلية راقية مع تنفيذ منضبط للمشاريع التجارية والسكنية والبيئات المتخصصة"
+  "Footer-Description": "تقديم تشطيبات داخلية راقية مع تنفيذ منضبط للمشاريع التجارية والسكنية والبيئات المتخصصة",
+  "Our Process": "عمليتنا",
+  "Step-by-Step": "خطوة بخطوة",
+  "Execution": "التنفيذ",
+  "Execution-Step-1": "معاينة الموقع وجدول الكميات",
+  "Execution-Step-2": "اعتماد التصميم",
+  "Execution-Step-3": "مرحلة التنفيذ",
+  "Execution-Step-4": "الفحص النهائي والتسليم",
+  "Step": "الخطوة"
 }

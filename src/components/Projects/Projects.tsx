@@ -22,10 +22,12 @@ const projects = [
     number: "01",
     title: "Be group – Full Fit-Out Execution",
     category: "Administrative office",
-    location: "Saudi Arabia",
+    location: "Cairo",
     year: "2024",
-    clientObjective: "Implementation constraints for the Saudi Arabian branch due to high operating costs and the need to maintain maximum productivity.",
-    result: "Delivered on schedule with full operational readiness and zero post-handover corrections.",
+    clientObjective:
+      "Implementation constraints for the Cairo branch due to high operating costs and the need to maintain maximum productivity",
+    result:
+      "Delivered on schedule with full operational readiness and zero post-handover corrections.",
     image: img1,
     galleryImages: [img1, img2, img3],
     tags: ["Full Fit-Out", "Administrative Office", "Interior Execution"],
@@ -49,8 +51,10 @@ const projects = [
     category: "Controlled Environment Facilities",
     location: "Badr City",
     year: "2023",
-    clientObjective: "Develop a controlled environment compliant with operational and technical requirements, ensuring stability of performance, process integrity, and long-term reliability.",
-    result: "Stable and compliant clean room environment delivered through disciplined execution and validated performance readiness.",
+    clientObjective:
+      "Develop a controlled environment compliant with operational and technical requirements, ensuring stability of performance, process integrity, and long-term reliability.",
+    result:
+      "Stable and compliant clean room environment delivered through disciplined execution and validated performance readiness.",
     image: img2,
     galleryImages: [img2, img4, img5],
     tags: ["Clean Room", "Controlled Environment", "Technical"],
@@ -75,8 +79,10 @@ const projects = [
     category: "Healthcare",
     location: "New Cairo",
     year: "2024",
-    clientObjective: "Launch ready medical facility within a strict operational deadline.",
-    result: "Delivered on schedule with full operational readiness and zero post-handover corrections.",
+    clientObjective:
+      "Launch ready medical facility within a strict operational deadline.",
+    result:
+      "Delivered on schedule with full operational readiness and zero post-handover corrections.",
     image: img3,
     galleryImages: [img3, img6, img1],
     tags: ["Healthcare", "Medical Fit-Out", "Full Fit-Out"],
@@ -100,8 +106,10 @@ const projects = [
     category: "Corporate Workspace",
     location: "Cairo",
     year: "2023",
-    clientObjective: "Develop a structured workspace aligned with corporate functionality and operational flow.",
-    result: "Timeline protected delivery with structured final approval process.",
+    clientObjective:
+      "Develop a structured workspace aligned with corporate functionality and operational flow.",
+    result:
+      "Timeline protected delivery with structured final approval process.",
     image: img4,
     galleryImages: [img4, img2, img6],
     tags: ["Corporate Workspace", "Interior Fit-Out", "Admin Office"],
@@ -125,8 +133,10 @@ const projects = [
     category: "Retail",
     location: "Mall District 5",
     year: "2024",
-    clientObjective: "Deliver a fully integrated MEP system to support retail operations, ensuring efficient performance, safety compliance, and optimal customer comfort within the allocated timeline.",
-    result: "Successfully delivered a fully operational MEP system within 30 days, ensuring readiness for store opening and smooth day-to-day operations.",
+    clientObjective:
+      "Deliver a fully integrated MEP system to support retail operations, ensuring efficient performance, safety compliance, and optimal customer comfort within the allocated timeline.",
+    result:
+      "Successfully delivered a fully operational MEP system within 30 days, ensuring readiness for store opening and smooth day-to-day operations.",
     image: img5,
     galleryImages: [img5, img3, img4],
     tags: ["Retail", "MEP", "Lighting Design"],
@@ -151,8 +161,10 @@ const projects = [
     category: "Residential",
     location: "El Narges",
     year: "2023",
-    clientObjective: "Deliver a fully integrated residential unit through a comprehensive design and build approach, ensuring functionality, aesthetic coherence, and high-quality finishing within the defined timeframe.",
-    result: "Successfully delivered a fully completed residential apartment with refined detailing, operational readiness, and high finishing standards within 116 days.",
+    clientObjective:
+      "Deliver a fully integrated residential unit through a comprehensive design and build approach, ensuring functionality, aesthetic coherence, and high-quality finishing within the defined timeframe.",
+    result:
+      "Successfully delivered a fully completed residential apartment with refined detailing, operational readiness, and high finishing standards within 116 days.",
     image: img6,
     galleryImages: [img6, img1, img2],
     tags: ["Design & Build", "Residential", "High Finishing"],
@@ -193,7 +205,7 @@ export default function Projects() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 50%",
+          start: "top 70%",
           end: "bottom 80%",
           toggleActions: "play none none reverse",
         },
@@ -418,7 +430,6 @@ export default function Projects() {
           {/* Section Footer Text — Stacked */}
           <div className="mt-12">
             <div className="mx-auto flex flex-col items-center text-center gap-4">
-
               {/* Headline */}
               {/* <h3 className="text-4xl font-bold text-[#e6d5c0] tracking-wide leading-tight">
                 END TO END EXECUTION
@@ -449,8 +460,6 @@ export default function Projects() {
               <div className="h-px w-full bg-gradient-to-r from-transparent via-[#c9a750] to-transparent"></div>
             </div>
           </div>
-
-
         </div>
       </section>
 
@@ -502,10 +511,11 @@ export default function Projects() {
                           <div
                             key={idx}
                             onClick={() => setActiveImage(img)}
-                            className={`relative h-24 rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 ${activeImage === img
-                              ? "border-[#c9a750] scale-95 shadow-[0_0_15px_rgba(201,167,80,0.3)]"
-                              : "border-[#c9a750]/10 hover:border-[#c9a750]/40"
-                              }`}
+                            className={`relative h-24 rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 ${
+                              activeImage === img
+                                ? "border-[#c9a750] scale-95 shadow-[0_0_15px_rgba(201,167,80,0.3)]"
+                                : "border-[#c9a750]/10 hover:border-[#c9a750]/40"
+                            }`}
                           >
                             <Image
                               src={img}
@@ -564,7 +574,7 @@ export default function Projects() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 py-8 border-y border-[#c9a750]/10 text-center md:text-left">
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2">
-                             Scope
+                            Scope
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
                             {selectedProject.details.scope}

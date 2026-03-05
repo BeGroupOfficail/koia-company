@@ -8,6 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import RiskManagement from "./RiskManagement";
 import QualityControl from "./QualityControl";
 import ExecutionStandard from "./ExecutionStandard";
+import StepByStepExecution from "./StepByStepExecution";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -75,9 +76,9 @@ export default function ExecutionProcess() {
       gsap.from(".std-statement", { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".std-statement", start: "top 85%", toggleActions: "play none none none" } });
 
       // Execution steps
-      gsap.from(".ep-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 85%", toggleActions: "play none none reverse" } });
-      gsap.from(".ep-title", { y: 60, opacity: 0, duration: 1.1, ease: "power3.out", scrollTrigger: { trigger: ".ep-title", start: "top 85%", toggleActions: "play none none reverse" } });
-      gsap.from(".ep-divider", { scaleX: 0, transformOrigin: "left center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-divider", start: "top 88%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 87%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-title", start: "top 87%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 87%", toggleActions: "play none none reverse" } });
       gsap.from(".exec-card", { y: 80, opacity: 0, duration: 0.85, stagger: 0.18, ease: "power3.out", scrollTrigger: { trigger: ".exec-steps", start: "top 78%", toggleActions: "play none none reverse" } });
       gsap.from(".exec-connector", { scaleX: 0, transformOrigin: "left center", duration: 0.7, stagger: 0.18, delay: 0.3, ease: "power2.out", scrollTrigger: { trigger: ".exec-steps", start: "top 75%", toggleActions: "play none none reverse" } });
     },
@@ -105,6 +106,8 @@ export default function ExecutionProcess() {
         <QualityControl />
         <Divider />
         <ExecutionStandard />
+        <Divider />
+        <StepByStepExecution />
       </div>
     </section>
   );

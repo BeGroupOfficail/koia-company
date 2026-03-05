@@ -1,17 +1,16 @@
 "use client";
 
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const executionSteps = [
   {
     number: "01",
     title: "Site Survey & BOQ",
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
-        <path d="M6 34L14 26M14 26L20 32M14 26L24 16M34 6L24 16M24 16L30 22" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="8" cy="32" r="3" />
-        <circle cx="32" cy="8" r="3" />
-        <path d="M22 8h10v10" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" strokeLinecap="round" />
+        <path d="M8 11h6M11 8v6" strokeLinecap="round" />
       </svg>
     ),
   },
@@ -19,10 +18,8 @@ const executionSteps = [
     number: "02",
     title: "Design Approval",
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
-        <rect x="7" y="5" width="24" height="30" rx="2" />
-        <path d="M13 13h14M13 19h14M13 25h8" strokeLinecap="round" />
-        <path d="M24 27l2.5 2.5 5-5" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -30,10 +27,9 @@ const executionSteps = [
     number: "03",
     title: "Execution Phase",
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
-        <path d="M20 6v5M20 29v5M6 20h5M29 20h5" strokeLinecap="round" />
-        <circle cx="20" cy="20" r="6" />
-        <path d="M11 11l3 3M26 26l3 3M11 29l3-3M26 14l3-3" strokeLinecap="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+        <path d="M12 2 2 7l10 5 10-5-10-5Z" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m2 17 10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
@@ -41,33 +37,32 @@ const executionSteps = [
     number: "04",
     title: "Final Inspection & Handover",
     icon: (
-      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
-        <circle cx="20" cy="20" r="14" />
-        <path d="M13 20l4.5 4.5L27 14" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m9 11 3 3L22 4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },
 ];
 
 export default function StepByStepExecution() {
+  const t = useTranslations("home");
   const locale = useLocale();
   const isRtl = locale === "ar";
 
   return (
-    <div className="pt-24 pb-32">
+    <div className="py-24">
       <div className="mb-20 text-center">
-        <div className="ep-label inline-flex items-center gap-4 mb-5">
-          <div className="w-10 h-px"/>
-          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>Our Process</span>
-          <div className="w-10 h-px" />
+        <div className="ep-label inline-block mb-5">
+          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("Our Process")}</span>
+          <div className="ep-header-line h-0.5 w-full mt-2" style={{ background: "linear-gradient(to right, transparent, #c9a750, transparent)" }}></div>
         </div>
         <h2 className="ep-title text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight mb-6 uppercase" style={{ color: "#e6d5c0" }}>
-          Step-by-Step{" "}
-          <span className="italic" style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Execution
+          {t("Step-by-Step")}{" "}
+          <span style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            {t("Execution")}
           </span>
         </h2>
-        <div className="ep-divider h-px w-40 mx-auto" style={{ background: "linear-gradient(to right, transparent, #c9a750, transparent)" }} />
       </div>
 
       {/* Desktop */}
@@ -88,7 +83,9 @@ export default function StepByStepExecution() {
                     <span className="text-[9px] font-black tabular-nums" style={{ color: "#c9a750" }}>{step.number}</span>
                   </div>
                 </div>
-                <h3 className="text-sm font-semibold leading-snug max-w-[140px]" style={{ color: "#e6d5c0" }}>{step.title}</h3>
+                <h3 className="text-sm font-semibold leading-snug max-w-[140px]" style={{ color: "#e6d5c0" }}>
+                  {t(`Execution-Step-${i + 1}`)}
+                </h3>
                 <div className="mt-3 h-px" style={{ width: "40px", background: "#c9a750" }} />
               </div>
               {i < executionSteps.length - 1 && (
@@ -123,8 +120,12 @@ export default function StepByStepExecution() {
                   {step.icon}
                 </div>
                 <div className="flex-1">
-                  <span className="text-[10px] font-black tracking-[0.3em] uppercase block mb-1" style={{ color: "#c9a750" }}>Step {step.number}</span>
-                  <h3 className="text-base font-semibold" style={{ color: "#e6d5c0" }}>{step.title}</h3>
+                  <span className="text-[10px] font-black tracking-[0.3em] uppercase block mb-1" style={{ color: "#c9a750" }}>
+                    {t("Step")} {step.number}
+                  </span>
+                  <h3 className="text-base font-semibold" style={{ color: "#e6d5c0" }}>
+                    {t(`Execution-Step-${i + 1}`)}
+                  </h3>
                 </div>
               </div>
             </div>

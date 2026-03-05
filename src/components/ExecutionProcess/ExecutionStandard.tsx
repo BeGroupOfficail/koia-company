@@ -5,7 +5,7 @@ const standardsList = [
     title: "Executive Site Assessment & Strategic Planning",
     desc: "Comprehensive site evaluation and strategic roadmap development to align with project goals.",
     icon: (
-      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
         <path d="M4 14h20M14 4v20" strokeLinecap="round" />
         <circle cx="14" cy="14" r="3" />
         <path d="M14 4l3 3M14 4l-3 3" strokeLinecap="round" />
@@ -16,7 +16,7 @@ const standardsList = [
     title: "Scope Definition & Budget Structuring",
     desc: "Detailed scope mapping and transparent financial framework for predictable cost management.",
     icon: (
-      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
         <circle cx="14" cy="9" r="4" />
         <path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" strokeLinecap="round" />
       </svg>
@@ -26,7 +26,7 @@ const standardsList = [
     title: "Technical Documentation & Compliance Review",
     desc: "Rigorous technical planning and compliance auditing to ensure operational readiness.",
     icon: (
-      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
         <rect x="3" y="5" width="22" height="18" rx="2" />
         <path d="M3 10h22" />
         <path d="M8 15h4M8 19h4" strokeLinecap="round" />
@@ -37,7 +37,7 @@ const standardsList = [
     title: "Supervised Execution with Milestone Tracking",
     desc: "Disciplined project oversight with real-time milestone monitoring for deadline protection.",
     icon: (
-      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
         <path d="M14 3l11 19H3L14 3z" />
         <path d="M14 11v5" strokeLinecap="round" />
       </svg>
@@ -47,9 +47,10 @@ const standardsList = [
     title: "Formal Handover & Operational Readiness Review",
     desc: "Structured final approval process ensuring the space is fully ready for its intended use.",
     icon: (
-      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
-        <path d="M6 7h10a2 2 0 012 2v10l-4-3H6a2 2 0 01-2-2V9a2 2 0 012-2z" />
-        <path d="M10 12l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <circle cx="7.5" cy="15.5" r="5.5" />
+        <path d="m21 2-9.6 9.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m15.5 7.5 3 3L22 7l-3-3-3.5 3.5Z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
   },

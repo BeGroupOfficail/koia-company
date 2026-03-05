@@ -3,7 +3,7 @@
   "About": "Why KOIA",
   "Contact": "Contact",
   "Services": "Services",
-  "Projects": "Selected Works",
+  "Projects": "Works",
   "Execution Process": "Execution Process",
   "Fit-Out & Execution": "Fit-Out & Execution",
   "Project Management": "Project Management",
@@ -58,5 +58,13 @@
   "Collaborations": "Collaborations",
   "Business Clients Reached": "Business Clients Reached",
   "Projects Per Year": "Projects Per Year",
-  "Footer-Description": "Delivering high-end interior finishing with controlled execution across commercial, residential, and branded environments"
+  "Footer-Description": "Delivering high-end interior finishing with controlled execution across commercial, residential, and branded environments",
+  "Our Process": "Our Process",
+  "Step-by-Step": "Step-by-Step",
+  "Execution": "Execution",
+  "Execution-Step-1": "Site Survey & BOQ",
+  "Execution-Step-2": "Design Approval",
+  "Execution-Step-3": "Execution Phase",
+  "Execution-Step-4": "Final Inspection & Handover",
+  "Step": "Step"
 }
