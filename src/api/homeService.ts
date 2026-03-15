@@ -23,7 +23,7 @@ export async function fetchHomeData(lang = "en") {
 
     return {
       success: false,
-      message: "Unable to connect to the server. Please try again later.",
+      message: "Unable to connect to the server, Please try again later.",
     };
   }
 }
