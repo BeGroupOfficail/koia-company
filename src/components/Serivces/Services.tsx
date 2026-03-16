@@ -79,34 +79,30 @@ export default function KoiaServicesSection() {
   const services = [
     {
       number: "01",
-      title: "Corporate",
-      subtitle: "Offices",
-      description:
-        "Workplace fit-out delivered with clear milestones, coordinated shop drawings, and disciplined MEP/ceiling coordination supported by QA/QC checks and snagging before handover.",
+      title: t("Service-01-Title"),
+      subtitle: t("Service-01-Subtitle"),
+      description: t("Service-01-Description"),
       image: serviceImg1,
     },
     {
       number: "02",
-      title: "Commercial",
-      subtitle: "Retail",
-      description:
-        "Retail execution managed against defined opening schedules, with milestone-based planning, controlled site coordination, and structured closeout to ensure readiness for operation.",
+      title: t("Service-02-Title"),
+      subtitle: t("Service-02-Subtitle"),
+      description: t("Service-02-Description"),
       image: serviceImg2,
     },
     {
       number: "03",
-      title: "Medical",
-      subtitle: "Clinics / Clean Rooms",
-      description:
-        "Medical environments executed with precision and compliance awareness, integrating MEP coordination and documented QA/QC so the space is handed over ready for use.",
+      title: t("Service-03-Title"),
+      subtitle: t("Service-03-Subtitle"),
+      description: t("Service-03-Description"),
       image: serviceImg3,
     },
     {
       number: "04",
-      title: "Residential",
-      subtitle: "Villas / Apartments",
-      description:
-        "High end residential finishing managed through approved material submittals, method statements, and staged inspections ensuring consistent quality through to close-out.",
+      title: t("Service-04-Title"),
+      subtitle: t("Service-04-Subtitle"),
+      description: t("Service-04-Description"),
       image: serviceImg4,
     },
   ];

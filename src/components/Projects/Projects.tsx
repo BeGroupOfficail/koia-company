@@ -16,185 +16,171 @@ import { useLocale, useTranslations } from "next-intl";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const projects = [
-  {
-    id: 1,
-    number: "01",
-    title: "Be group – Full Fit-Out Execution",
-    category: "Administrative office",
-    location: "Cairo",
-    year: "2024",
-    clientObjective:
-      "Implementation constraints for the Cairo branch due to high operating costs and the need to maintain maximum productivity",
-    result:
-      "Delivered on schedule with full operational readiness and zero post-handover corrections.",
-    image: img1,
-    galleryImages: [img1, img2, img3],
-    tags: ["Full Fit-Out", "Administrative Office", "Interior Execution"],
-    details: {
-      client: "Be group",
-      scope: "Complete Interior Execution",
-      duration: "6 Weeks",
-      area: "780 sqm",
-      highlights: [
-        "Structured timeline planning",
-        "Daily on-site supervision",
-        "Stage by stage quality approvals",
-        "Parallel milestone coordination",
-      ],
-    },
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Clean Rooms – Interior Execution",
-    category: "Controlled Environment Facilities",
-    location: "Badr City",
-    year: "2023",
-    clientObjective:
-      "Develop a controlled environment compliant with operational and technical requirements, ensuring stability of performance, process integrity, and long-term reliability.",
-    result:
-      "Stable and compliant clean room environment delivered through disciplined execution and validated performance readiness.",
-    image: img2,
-    galleryImages: [img2, img4, img5],
-    tags: ["Clean Room", "Controlled Environment", "Technical"],
-    details: {
-      client: "Specialized Facility",
-      scope: "Specialized Clean Room Fit-Out",
-      duration: "70 Days",
-      area: "800 sqm",
-      highlights: [
-        "pre-defined technical specifications aligned with clean room standards",
-        "Detailed technical coordination prior to installation",
-        "Controlled installation procedures to ensure system integrity",
-        "Integrated execution of architectural and technical components",
-        "Structured inspection and verification before final handover",
-      ],
-    },
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "Medical Facility – Full Fit-Out Execution",
-    category: "Healthcare",
-    location: "New Cairo",
-    year: "2024",
-    clientObjective:
-      "Launch ready medical facility within a strict operational deadline.",
-    result:
-      "Delivered on schedule with full operational readiness and zero post-handover corrections.",
-    image: img3,
-    galleryImages: [img3, img6, img1],
-    tags: ["Healthcare", "Medical Fit-Out", "Full Fit-Out"],
-    details: {
-      client: "Medical Facility",
-      scope: "Complete Interior Execution",
-      duration: "8 Weeks",
-      area: "120 sqm",
-      highlights: [
-        "Structured timeline planning",
-        "Daily on-site supervision",
-        "Stage-by-stage quality approvals",
-        "Parallel milestone coordination",
-      ],
-    },
-  },
-  {
-    id: 4,
-    number: "04",
-    title: "Corporate Administrative Office – Interior Execution",
-    category: "Corporate Workspace",
-    location: "Cairo",
-    year: "2023",
-    clientObjective:
-      "Develop a structured workspace aligned with corporate functionality and operational flow.",
-    result:
-      "Timeline protected delivery with structured final approval process.",
-    image: img4,
-    galleryImages: [img4, img2, img6],
-    tags: ["Corporate Workspace", "Interior Fit-Out", "Admin Office"],
-    details: {
-      client: "Corporate Office",
-      scope: "Full Interior Fit-Out",
-      duration: "10 Weeks",
-      area: "500 sqm",
-      highlights: [
-        "pre aligned budget structure",
-        "Technical documentation before site activation",
-        "Controlled execution under milestone supervision",
-        "Formal quality inspection prior to handover",
-      ],
-    },
-  },
-  {
-    id: 5,
-    number: "05",
-    title: "Optical Store – MEP Execution",
-    category: "Retail",
-    location: "Mall District 5",
-    year: "2024",
-    clientObjective:
-      "Deliver a fully integrated MEP system to support retail operations, ensuring efficient performance, safety compliance, and optimal customer comfort within the allocated timeline.",
-    result:
-      "Successfully delivered a fully operational MEP system within 30 days, ensuring readiness for store opening and smooth day-to-day operations.",
-    image: img5,
-    galleryImages: [img5, img3, img4],
-    tags: ["Retail", "MEP", "Lighting Design"],
-    details: {
-      client: "Optical Store",
-      scope: "MEP Execution",
-      duration: "30 Days",
-      area: "250 sqm",
-      highlights: [
-        "Coordinated MEP design implementation aligned with retail standards",
-        "Efficient power distribution and lighting layout for product display optimization",
-        "HVAC installation to maintain thermal comfort and system efficiency",
-        "Integration of fire alarm and safety systems in compliance with regulations",
-        "Accelerated execution schedule to meet mall operational requirements",
-      ],
-    },
-  },
-  {
-    id: 6,
-    number: "06",
-    title: "Luxury Residential Apartment – Design & Build Execution",
-    category: "Residential",
-    location: "El Narges",
-    year: "2023",
-    clientObjective:
-      "Deliver a fully integrated residential unit through a comprehensive design and build approach, ensuring functionality, aesthetic coherence, and high-quality finishing within the defined timeframe.",
-    result:
-      "Successfully delivered a fully completed residential apartment with refined detailing, operational readiness, and high finishing standards within 116 days.",
-    image: img6,
-    galleryImages: [img6, img1, img2],
-    tags: ["Design & Build", "Residential", "High Finishing"],
-    details: {
-      client: "Luxury Residential",
-      scope: "Design and Build Execution",
-      duration: "116 Days",
-      area: "140 sqm",
-      highlights: [
-        "End to end design development aligned with client lifestyle requirements",
-        "Coordinated architectural, MEP, and finishing works",
-        "Material selection and specification management",
-        "Structured execution schedule with phased approvals",
-        "Continuous site supervision and quality control",
-      ],
-    },
-  },
-];
-
-
-
-
 export default function Projects() {
   const sectionRef = useRef<HTMLElement>(null);
+  const t = useTranslations("home");
+  const locale = useLocale();
+
+  const projects = [
+    {
+      id: 1,
+      number: "01",
+      title: t("Project-01-Title"),
+      category: t("Project-01-Category"),
+      location: t("Project-01-Location"),
+      year: "2024",
+      clientObjective: t("Project-01-ClientObjective"),
+      result: t("Project-01-Result"),
+      image: img1,
+      galleryImages: [img1, img2, img3],
+      tags: [t("Tag-FullFitOut"), t("Tag-AdminOffice"), t("Tag-InteriorExecution")],
+      details: {
+        client: "Be group",
+        scope: t("Project-01-Scope"),
+        duration: t("Project-01-Duration"),
+        area: t("Project-01-Area"),
+        highlights: [
+          t("Project-01-Highlight-1"),
+          t("Project-01-Highlight-2"),
+          t("Project-01-Highlight-3"),
+          t("Project-01-Highlight-4"),
+        ],
+      },
+    },
+    {
+      id: 2,
+      number: "02",
+      title: t("Project-02-Title"),
+      category: t("Project-02-Category"),
+      location: t("Project-02-Location"),
+      year: "2023",
+      clientObjective: t("Project-02-ClientObjective"),
+      result: t("Project-02-Result"),
+      image: img2,
+      galleryImages: [img2, img4, img5],
+      tags: [t("Tag-CleanRoom"), t("Tag-ControlledEnv"), t("Tag-Technical")],
+      details: {
+        client: "Specialized Facility",
+        scope: t("Project-02-Scope"),
+        duration: t("Project-02-Duration"),
+        area: t("Project-02-Area"),
+        highlights: [
+          t("Project-02-Highlight-1"),
+          t("Project-02-Highlight-2"),
+          t("Project-02-Highlight-3"),
+          t("Project-02-Highlight-4"),
+          t("Project-02-Highlight-5"),
+        ],
+      },
+    },
+    {
+      id: 3,
+      number: "03",
+      title: t("Project-03-Title"),
+      category: t("Project-03-Category"),
+      location: t("Project-03-Location"),
+      year: "2024",
+      clientObjective: t("Project-03-ClientObjective"),
+      result: t("Project-03-Result"),
+      image: img3,
+      galleryImages: [img3, img6, img1],
+      tags: [t("Tag-Healthcare"), t("Tag-MedicalFitOut"), t("Tag-FullFitOut")],
+      details: {
+        client: "Medical Facility",
+        scope: t("Project-03-Scope"),
+        duration: t("Project-03-Duration"),
+        area: t("Project-03-Area"),
+        highlights: [
+          t("Project-03-Highlight-1"),
+          t("Project-03-Highlight-2"),
+          t("Project-03-Highlight-3"),
+          t("Project-03-Highlight-4"),
+        ],
+      },
+    },
+    {
+      id: 4,
+      number: "04",
+      title: t("Project-04-Title"),
+      category: t("Project-04-Category"),
+      location: t("Project-04-Location"),
+      year: "2023",
+      clientObjective: t("Project-04-ClientObjective"),
+      result: t("Project-04-Result"),
+      image: img4,
+      galleryImages: [img4, img2, img6],
+      tags: [t("Tag-CorporateWorkspace"), t("Tag-InteriorFitOut"), t("Tag-AdminOffice")],
+      details: {
+        client: "Corporate Office",
+        scope: t("Project-04-Scope"),
+        duration: t("Project-04-Duration"),
+        area: t("Project-04-Area"),
+        highlights: [
+          t("Project-04-Highlight-1"),
+          t("Project-04-Highlight-2"),
+          t("Project-04-Highlight-3"),
+          t("Project-04-Highlight-4"),
+        ],
+      },
+    },
+    {
+      id: 5,
+      number: "05",
+      title: t("Project-05-Title"),
+      category: t("Project-05-Category"),
+      location: t("Project-05-Location"),
+      year: "2024",
+      clientObjective: t("Project-05-ClientObjective"),
+      result: t("Project-05-Result"),
+      image: img5,
+      galleryImages: [img5, img3, img4],
+      tags: [t("Tag-Retail"), t("Tag-MEP"), t("Tag-LightingDesign")],
+      details: {
+        client: "Optical Store",
+        scope: t("Project-05-Scope"),
+        duration: t("Project-05-Duration"),
+        area: t("Project-05-Area"),
+        highlights: [
+          t("Project-05-Highlight-1"),
+          t("Project-05-Highlight-2"),
+          t("Project-05-Highlight-3"),
+          t("Project-05-Highlight-4"),
+          t("Project-05-Highlight-5"),
+        ],
+      },
+    },
+    {
+      id: 6,
+      number: "06",
+      title: t("Project-06-Title"),
+      category: t("Project-06-Category"),
+      location: t("Project-06-Location"),
+      year: "2023",
+      clientObjective: t("Project-06-ClientObjective"),
+      result: t("Project-06-Result"),
+      image: img6,
+      galleryImages: [img6, img1, img2],
+      tags: [t("Tag-DesignBuild"), t("Tag-Residential"), t("Tag-HighFinishing")],
+      details: {
+        client: "Luxury Residential",
+        scope: t("Project-06-Scope"),
+        duration: t("Project-06-Duration"),
+        area: t("Project-06-Area"),
+        highlights: [
+          t("Project-06-Highlight-1"),
+          t("Project-06-Highlight-2"),
+          t("Project-06-Highlight-3"),
+          t("Project-06-Highlight-4"),
+          t("Project-06-Highlight-5"),
+        ],
+      },
+    },
+  ];
+
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
   const [activeImage, setActiveImage] = useState<StaticImageData | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
-  const t = useTranslations("home");
-  const locale = useLocale();
 
   useEffect(() => {
     setMounted(true);
@@ -562,7 +548,7 @@ export default function Projects() {
                       {/* Client Objective */}
                       <div className="mb-12">
                         <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
-                          Client Objective
+                          {t("ClientObjective")}
                           <span className="flex-1 h-px bg-gradient-to-r from-[#c9a750]/20 to-transparent"></span>
                         </h4>
                         <p className="text-[#e6d5c0]/80 text-lg leading-relaxed italic">
@@ -574,7 +560,7 @@ export default function Projects() {
                       <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 py-8 border-y border-[#c9a750]/10 text-center md:text-left">
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2">
-                            Scope
+                            {t("Scope")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
                             {selectedProject.details.scope}
@@ -582,7 +568,7 @@ export default function Projects() {
                         </div>
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2">
-                            Size / Area
+                            {t("SizeArea")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
                             {selectedProject.details.area}
@@ -590,7 +576,7 @@ export default function Projects() {
                         </div>
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2 whitespace-nowrap">
-                            Delivery Timeline
+                            {t("DeliveryTimeline")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
                             {selectedProject.details.duration}
@@ -624,7 +610,7 @@ export default function Projects() {
                       {/* Result */}
                       <div className="mb-6">
                         <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
-                          Result
+                          {t("Result")}
                           <span className="flex-1 h-px bg-gradient-to-r from-[#c9a750]/20 to-transparent"></span>
                         </h4>
                         <div className="p-5 rounded-2xl bg-[#c9a750]/5 border border-[#c9a750]/10">

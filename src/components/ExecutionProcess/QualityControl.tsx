@@ -1,67 +1,71 @@
 "use client";
 
-const qualitySteps = [
-  {
-    number: "01",
-    title: "Material Inspection",
-    desc: "Every material is verified against specifications before it reaches the site.",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
-        <circle cx="14" cy="14" r="8" />
-        <path d="M20 20l6 6" strokeLinecap="round" />
-        <path d="M11 14l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    number: "02",
-    title: "On-Site Technical Supervision",
-    desc: "Qualified engineers monitor every stage of installation in real time.",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
-        <path d="M4 26l5-5m0 0l4 4m-4-4l7-7m0 0l4 4m-4-4l6-6" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="25" cy="7" r="3" />
-        <circle cx="5" cy="27" r="2" />
-      </svg>
-    ),
-  },
-  {
-    number: "03",
-    title: "Stage-by-Stage Approval",
-    desc: "No phase proceeds until the prior stage is formally signed off.",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
-        <rect x="4" y="5" width="24" height="22" rx="2" />
-        <path d="M4 11h24" />
-        <path d="M10 17l2 2 4-4M10 22h12" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    number: "04",
-    title: "Final Snag List Before Handover",
-    desc: "A comprehensive punch list is cleared before any handover is issued.",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
-        <path d="M8 6h16a2 2 0 012 2v18l-4-3H8a2 2 0 01-2-2V8a2 2 0 012-2z" />
-        <path d="M11 13l2 2 5-5M11 19h8" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function QualityControl() {
+  const t = useTranslations("home");
+
+  const qualitySteps = [
+    {
+      number: "01",
+      title: t("QC-Step-01-Title"),
+      desc: t("QC-Step-01-Desc"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+          <circle cx="14" cy="14" r="8" />
+          <path d="M20 20l6 6" strokeLinecap="round" />
+          <path d="M11 14l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+    {
+      number: "02",
+      title: t("QC-Step-02-Title"),
+      desc: t("QC-Step-02-Desc"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+          <path d="M4 26l5-5m0 0l4 4m-4-4l7-7m0 0l4 4m-4-4l6-6" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="25" cy="7" r="3" />
+          <circle cx="5" cy="27" r="2" />
+        </svg>
+      ),
+    },
+    {
+      number: "03",
+      title: t("QC-Step-03-Title"),
+      desc: t("QC-Step-03-Desc"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+          <rect x="4" y="5" width="24" height="22" rx="2" />
+          <path d="M4 11h24" />
+          <path d="M10 17l2 2 4-4M10 22h12" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+    {
+      number: "04",
+      title: t("QC-Step-04-Title"),
+      desc: t("QC-Step-04-Desc"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+          <path d="M8 6h16a2 2 0 012 2v18l-4-3H8a2 2 0 01-2-2V8a2 2 0 012-2z" />
+          <path d="M11 13l2 2 5-5M11 19h8" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <div className="pt-24 pb-24 max-w-9xl mx-auto">
       <div className="mb-16 text-center">
         <div className="qc-label inline-block mb-5">
-          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>Quality Control</span>
+          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("QualityControl-Label")}</span>
           <div className="qc-header-line h-0.5 w-full mt-2" style={{ background: "linear-gradient(to right, transparent, #c9a750, transparent)" }}></div>
         </div>
         <h2 className="qc-title text-6xl md:text-8xl font-bold leading-[1.1] tracking-tight uppercase w-full" style={{ color: "#e6d5c0" }}>
-          Our Quality{" "}
-          <span className="italic" style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Control Process
+          {t("OurQuality")}{" "}
+          <span style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+            {t("ControlProcess")}
           </span>
         </h2>
       </div>

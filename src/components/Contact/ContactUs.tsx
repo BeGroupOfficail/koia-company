@@ -195,7 +195,7 @@ export default function KoiaContactSection() {
           />
         </svg>
       ),
-      title: "Phone",
+      title: t("Phone-Label"),
       value: "01120149797",
     },
     {
@@ -214,7 +214,7 @@ export default function KoiaContactSection() {
           />
         </svg>
       ),
-      title: "Email",
+      title: t("Email-Label"),
       value: "Info@koia-eg.com",
     },
     {
@@ -239,7 +239,7 @@ export default function KoiaContactSection() {
           />
         </svg>
       ),
-      title: "Location",
+      title: t("Location-Label"),
       value: t(
         "zahraa nasr city - Build 2013 - office no 1 - in front of jewel sport city Hotel",
       ),

@@ -1,58 +1,62 @@
 "use client";
 
-const riskItems = [
-  {
-    title: "Daily Site Supervision",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
-        <circle cx="16" cy="16" r="11" />
-        <path d="M16 9v7l4 4" strokeLinecap="round" strokeLinejoin="round" />
-        <path d="M6 6l2.5 2.5M23.5 6L26 8.5" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Budget Tracking System",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
-        <rect x="4" y="6" width="24" height="20" rx="2" />
-        <path d="M4 11h24" />
-        <path d="M10 16h4M10 20h4M18 16h4M18 20h4" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Material Approval Before Installation",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
-        <path d="M16 4l10 5v9c0 5-10 10-10 10S6 23 6 18V9l10-5z" />
-        <path d="M11 16l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
-      </svg>
-    ),
-  },
-  {
-    title: "Weekly Client Updates",
-    icon: (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
-        <path d="M26 6H6a2 2 0 00-2 2v14l4-4h18a2 2 0 002-2V8a2 2 0 00-2-2z" />
-        <path d="M10 13h12M10 17h7" strokeLinecap="round" />
-      </svg>
-    ),
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function RiskManagement() {
+  const t = useTranslations("home");
+
+  const riskItems = [
+    {
+      title: t("Risk-Step-01-Title"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+          <circle cx="16" cy="16" r="11" />
+          <path d="M16 9v7l4 4" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M6 6l2.5 2.5M23.5 6L26 8.5" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: t("Risk-Step-02-Title"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+          <rect x="4" y="6" width="24" height="20" rx="2" />
+          <path d="M4 11h24" />
+          <path d="M10 16h4M10 20h4M18 16h4M18 20h4" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+    {
+      title: t("Risk-Step-03-Title"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+          <path d="M16 4l10 5v9c0 5-10 10-10 10S6 23 6 18V9l10-5z" />
+          <path d="M11 16l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
+    },
+    {
+      title: t("Risk-Step-04-Title"),
+      icon: (
+        <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+          <path d="M26 6H6a2 2 0 00-2 2v14l4-4h18a2 2 0 002-2V8a2 2 0 00-2-2z" />
+          <path d="M10 13h12M10 17h7" strokeLinecap="round" />
+        </svg>
+      ),
+    },
+  ];
+
   return (
     <div className="pt-20 pb-24">
       <div className="mb-14 text-center">
         <div className="risk-label inline-block mb-5">
-          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>Risk Management</span>
+          <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("RiskManagement-Label")}</span>
           <div className="risk-header-line h-0.5 w-full mt-2" style={{ background: "linear-gradient(to right, transparent, #c9a750, transparent)" }}></div>
         </div>
         <h2 className="risk-title text-6xl md:text-8xl font-bold leading-[0.95] tracking-tight uppercase" style={{ color: "#e6d5c0" }}>
-          How We Control{" "}
+          {t("HowWeControl")}{" "}
           <span className="italic" style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-            Project Risks
+            {t("ProjectRisks")}
           </span>
         </h2>
       </div>
