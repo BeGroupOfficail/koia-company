@@ -6,22 +6,21 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 import { useLocale, useTranslations } from "next-intl";
+import { Contact } from "@/types/homeApiTypes";
+import { sendContactData } from "@/api/contactService";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Zod validation schema
-const contactSchema = z.object({
-  name: z.string().min(2, "Name must be at least 2 characters"),
-  email: z.string().email("Please enter a valid email address"),
-  phone: z.string().min(10, "Please enter a valid phone number"),
-  jobTitle: z.string().optional(),
-  companyName: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters"),
-});
+type ContactFormData = {
+  name: string;
+  email: string;
+  phone: string;
+  jobTitle?: string;
+  companyName?: string;
+  message: string;
+};
 
-type ContactFormData = z.infer<typeof contactSchema>;
-
-export default function KoiaContactSection() {
+export default function KoiaContactSection({ contact }: { contact: Contact }) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
     email: "",
@@ -38,9 +37,20 @@ export default function KoiaContactSection() {
   const [submitStatus, setSubmitStatus] = useState<
     "idle" | "success" | "error"
   >("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations("home");
   const locale = useLocale();
+
+  // Zod validation schema defined inside to use translations
+  const contactSchema = z.object({
+    name: z.string().min(2, t("Name must be at least 2 characters")),
+    email: z.string().email(t("Please enter a valid email address")),
+    phone: z.string().min(10, t("Please enter a valid phone number")),
+    jobTitle: z.string().optional(),
+    companyName: z.string().optional(),
+    message: z.string().min(10, t("Message must be at least 10 characters")),
+  });
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -144,37 +154,50 @@ export default function KoiaContactSection() {
       // Validate form data
       const validatedData = contactSchema.parse(formData);
 
-      // Console log the validated data
-      console.log("Form Data Submitted:", validatedData);
-      // Success
-      setSubmitStatus("success");
-      setFormData({ 
-        name: "", 
-        email: "", 
-        phone: "", 
-        jobTitle: "", 
-        companyName: "", 
-        message: "" 
-      });
+      // Call the API service
+      const result = await sendContactData(validatedData as ContactFormData);
 
+      if (result.success) {
+        setSubmitStatus("success");
+        setErrorMessage(
+          result.data?.message || t("Message sent successfully!"),
+        );
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          jobTitle: "",
+          companyName: "",
+          message: "",
+        });
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(result.message || t("FAILED-TO-SEND-MESSAGE"));
+      }
     } catch (error) {
       if (error instanceof z.ZodError) {
         // Set validation errors
         const fieldErrors: Partial<Record<keyof ContactFormData, string>> = {};
-        error.issues.forEach((err) => {
-          if (err.path && err.path[0]) {
-            fieldErrors[err.path[0] as keyof ContactFormData] = err.message;
+        error.issues.forEach((issue) => {
+          const path = issue.path[0] as keyof ContactFormData;
+          if (path) {
+            fieldErrors[path] = issue.message;
           }
         });
-        console.log("Validation errors:", fieldErrors);
         setErrors(fieldErrors);
-        setSubmitStatus("error");
+        // We don't set a general error message here as per user request
       } else {
         console.error("Unexpected error:", error);
         setSubmitStatus("error");
+        setErrorMessage(t("FAILED-TO-SEND-MESSAGE"));
       }
     } finally {
       setIsSubmitting(false);
+      // Make the message last for 5 seconds
+      setTimeout(() => {
+        setSubmitStatus("idle");
+        setErrorMessage(null);
+      }, 5000);
     }
   };
 
@@ -196,7 +219,7 @@ export default function KoiaContactSection() {
         </svg>
       ),
       title: t("Phone-Label"),
-      value: "01120149797",
+      value: contact.phone,
     },
     {
       icon: (
@@ -215,7 +238,7 @@ export default function KoiaContactSection() {
         </svg>
       ),
       title: t("Email-Label"),
-      value: "Info@koia-eg.com",
+      value: contact.email,
     },
     {
       icon: (
@@ -240,9 +263,7 @@ export default function KoiaContactSection() {
         </svg>
       ),
       title: t("Location-Label"),
-      value: t(
-        "zahraa nasr city - Build 2013 - office no 1 - in front of jewel sport city Hotel",
-      ),
+      value: contact.address,
     },
   ];
 
@@ -251,6 +272,7 @@ export default function KoiaContactSection() {
       id="contact-us"
       ref={sectionRef}
       className="relative min-h-fit overflow-hidden py-12 px-6 md:px-12 lg:px-20"
+      dir={locale === "ar" ? "rtl" : "ltr"}
     >
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
@@ -316,12 +338,19 @@ export default function KoiaContactSection() {
               className="contact-form relative p-8 md:p-12 bg-gradient-to-br from-[#3b3121]/40 to-[#5d492c]/20 rounded-2xl border border-[#c9a750]/20 backdrop-blur-sm"
             >
               {/* Success Message */}
-              {submitStatus === "success" && (
+              {submitStatus === "success" && errorMessage && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500/50 rounded-lg">
                   <p className="text-green-400 text-center font-semibold">
-                    {t(
-                      "Message sent successfully! We will get back to you soon",
-                    )}
+                    {errorMessage}
+                  </p>
+                </div>
+              )}
+
+              {/* Error Message */}
+              {submitStatus === "error" && errorMessage && (
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/50 rounded-lg">
+                  <p className="text-red-400 text-center font-semibold">
+                    {errorMessage}
                   </p>
                 </div>
               )}
@@ -349,7 +378,7 @@ export default function KoiaContactSection() {
                     onBlur={() => setFocusedField(null)}
                     className={`w-full px-4 py-4 bg-[#171410]/50 border ${
                       errors.name ? "border-red-500" : "border-[#c9a750]/30"
-                    } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300`}
+                    } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                     suppressHydrationWarning
                   />
                   {errors.name && (
@@ -381,7 +410,7 @@ export default function KoiaContactSection() {
                       onBlur={() => setFocusedField(null)}
                       className={`w-full px-4 py-4 bg-[#171410]/50 border ${
                         errors.email ? "border-red-500" : "border-[#c9a750]/30"
-                      } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300`}
+                      } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
                     />
                     {errors.email && (
@@ -413,7 +442,7 @@ export default function KoiaContactSection() {
                       onBlur={() => setFocusedField(null)}
                       className={`w-full px-4 py-4 bg-[#171410]/50 border ${
                         errors.phone ? "border-red-500" : "border-[#c9a750]/30"
-                      } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300`}
+                      } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
                     />
                     {errors.phone && (
@@ -446,7 +475,7 @@ export default function KoiaContactSection() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField("jobTitle")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300"
+                      className={`w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
                     />
                   </div>
@@ -471,7 +500,7 @@ export default function KoiaContactSection() {
                       onChange={handleChange}
                       onFocus={() => setFocusedField("companyName")}
                       onBlur={() => setFocusedField(null)}
-                      className="w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300"
+                      className={`w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
                     />
                   </div>
@@ -499,7 +528,7 @@ export default function KoiaContactSection() {
                     rows={6}
                     className={`w-full px-4 py-4 bg-[#171410]/50 border ${
                       errors.message ? "border-red-500" : "border-[#c9a750]/30"
-                    } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 resize-none`}
+                    } rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 resize-none ${locale === "ar" ? "text-right" : "text-left"}`}
                     suppressHydrationWarning
                   />
                   {errors.message && (

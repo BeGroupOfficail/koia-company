@@ -1,8 +1,9 @@
 "use client";
 
+import { Section } from "@/types/homeApiTypes";
 import { useTranslations } from "next-intl";
 
-export default function QualityControl() {
+export default function QualityControl({ sections }: { sections: Section[] }) {
   const t = useTranslations("home");
 
   const qualitySteps = [

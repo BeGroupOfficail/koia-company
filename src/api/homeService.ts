@@ -2,7 +2,7 @@ const NEXT_PUBLIC_BACKEND_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_BASE_URL;
 
 export async function fetchHomeData(lang = "en") {
   try {
-    const response = await fetch(`${NEXT_PUBLIC_BACKEND_BASE_URL}/home`, {
+    const response = await fetch(`${NEXT_PUBLIC_BACKEND_BASE_URL}/${lang}/home`, {
       headers: {
         "Content-Type": "application/json",
         "Accept-Language": lang,

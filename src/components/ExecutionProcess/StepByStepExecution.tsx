@@ -1,5 +1,6 @@
 "use client";
 
+import { Section } from "@/types/homeApiTypes";
 import { useLocale, useTranslations } from "next-intl";
 
 const executionSteps = [
@@ -45,7 +46,7 @@ const executionSteps = [
   },
 ];
 
-export default function StepByStepExecution() {
+export default function StepByStepExecution({ sections }: { sections: Section[] }) {
   const t = useTranslations("home");
   const locale = useLocale();
   const isRtl = locale === "ar";

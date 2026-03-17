@@ -14,7 +14,9 @@
   "Sections": "Sections",
   "About Us": "Why KOIA",
   "Our Services": "Our Services",
-  "About-section": "KOIA Built for Business Not Just Interiors",
+  "KOIA Built for Business Not Just Interiors": "KOIA Built for Business Not Just Interiors",
+  "ABOUT_TITLE_PART1": "KOIA",
+  "ABOUT_TITLE_PART2": "Built for Business Not Just Interiors",
   "Our Expertise": "Our Expertise",
   "OUR": "OUR",
   "SERVICES": "SERVICES",
@@ -116,6 +118,7 @@
   "SizeArea": "Size / Area",
   "DeliveryTimeline": "Delivery Timeline",
   "Result": "Result",
+  "Client": "Client",
   "Project-01-Title": "Be group – Full Fit-Out Execution",
   "Project-01-Category": "Administrative office",
   "Project-01-Location": "Cairo",
@@ -209,5 +212,11 @@
   "Tag-HighFinishing": "High Finishing",
   "Phone-Label": "Phone",
   "Email-Label": "Email",
-  "Location-Label": "Location"
+  "Location-Label": "Location",
+  "FAILED-TO-SEND-MESSAGE": "Failed to send message. Please try again later.",
+  "PLEASE-FIX-ERRORS": "Please fix the errors in the form before submitting.",
+  "Name must be at least 2 characters": "Name must be at least 2 characters",
+  "Please enter a valid email address": "Please enter a valid email address",
+  "Please enter a valid phone number": "Please enter a valid phone number",
+  "Message must be at least 10 characters": "Message must be at least 10 characters"
 }

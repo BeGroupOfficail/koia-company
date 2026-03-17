@@ -1,8 +1,9 @@
 "use client";
 
+import { Section } from "@/types/homeApiTypes";
 import { useTranslations } from "next-intl";
 
-export default function RiskManagement() {
+export default function RiskManagement({ sections }: { sections: Section[] }) {
   const t = useTranslations("home");
 
   const riskItems = [

@@ -4,181 +4,19 @@ import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image, { StaticImageData } from "next/image";
-import { X, ArrowRight, Calendar, MapPin, ArrowLeft } from "lucide-react";
-import img1 from "@/assets/service1.jpg";
-import img2 from "@/assets/service2.jpg";
-import img3 from "@/assets/service3.jpg";
-import img4 from "@/assets/serivce4.jpg";
-import img5 from "@/assets/1.jpg";
-import img6 from "@/assets/2.jpg";
+import Image from "next/image";
+import { X, ArrowRight, MapPin, ArrowLeft } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import { Project } from "@/types/homeApiTypes";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Projects() {
+export default function Projects({ projects }: { projects: Project[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations("home");
   const locale = useLocale();
-
-  const projects = [
-    {
-      id: 1,
-      number: "01",
-      title: t("Project-01-Title"),
-      category: t("Project-01-Category"),
-      location: t("Project-01-Location"),
-      year: "2024",
-      clientObjective: t("Project-01-ClientObjective"),
-      result: t("Project-01-Result"),
-      image: img1,
-      galleryImages: [img1, img2, img3],
-      tags: [t("Tag-FullFitOut"), t("Tag-AdminOffice"), t("Tag-InteriorExecution")],
-      details: {
-        client: "Be group",
-        scope: t("Project-01-Scope"),
-        duration: t("Project-01-Duration"),
-        area: t("Project-01-Area"),
-        highlights: [
-          t("Project-01-Highlight-1"),
-          t("Project-01-Highlight-2"),
-          t("Project-01-Highlight-3"),
-          t("Project-01-Highlight-4"),
-        ],
-      },
-    },
-    {
-      id: 2,
-      number: "02",
-      title: t("Project-02-Title"),
-      category: t("Project-02-Category"),
-      location: t("Project-02-Location"),
-      year: "2023",
-      clientObjective: t("Project-02-ClientObjective"),
-      result: t("Project-02-Result"),
-      image: img2,
-      galleryImages: [img2, img4, img5],
-      tags: [t("Tag-CleanRoom"), t("Tag-ControlledEnv"), t("Tag-Technical")],
-      details: {
-        client: "Specialized Facility",
-        scope: t("Project-02-Scope"),
-        duration: t("Project-02-Duration"),
-        area: t("Project-02-Area"),
-        highlights: [
-          t("Project-02-Highlight-1"),
-          t("Project-02-Highlight-2"),
-          t("Project-02-Highlight-3"),
-          t("Project-02-Highlight-4"),
-          t("Project-02-Highlight-5"),
-        ],
-      },
-    },
-    {
-      id: 3,
-      number: "03",
-      title: t("Project-03-Title"),
-      category: t("Project-03-Category"),
-      location: t("Project-03-Location"),
-      year: "2024",
-      clientObjective: t("Project-03-ClientObjective"),
-      result: t("Project-03-Result"),
-      image: img3,
-      galleryImages: [img3, img6, img1],
-      tags: [t("Tag-Healthcare"), t("Tag-MedicalFitOut"), t("Tag-FullFitOut")],
-      details: {
-        client: "Medical Facility",
-        scope: t("Project-03-Scope"),
-        duration: t("Project-03-Duration"),
-        area: t("Project-03-Area"),
-        highlights: [
-          t("Project-03-Highlight-1"),
-          t("Project-03-Highlight-2"),
-          t("Project-03-Highlight-3"),
-          t("Project-03-Highlight-4"),
-        ],
-      },
-    },
-    {
-      id: 4,
-      number: "04",
-      title: t("Project-04-Title"),
-      category: t("Project-04-Category"),
-      location: t("Project-04-Location"),
-      year: "2023",
-      clientObjective: t("Project-04-ClientObjective"),
-      result: t("Project-04-Result"),
-      image: img4,
-      galleryImages: [img4, img2, img6],
-      tags: [t("Tag-CorporateWorkspace"), t("Tag-InteriorFitOut"), t("Tag-AdminOffice")],
-      details: {
-        client: "Corporate Office",
-        scope: t("Project-04-Scope"),
-        duration: t("Project-04-Duration"),
-        area: t("Project-04-Area"),
-        highlights: [
-          t("Project-04-Highlight-1"),
-          t("Project-04-Highlight-2"),
-          t("Project-04-Highlight-3"),
-          t("Project-04-Highlight-4"),
-        ],
-      },
-    },
-    {
-      id: 5,
-      number: "05",
-      title: t("Project-05-Title"),
-      category: t("Project-05-Category"),
-      location: t("Project-05-Location"),
-      year: "2024",
-      clientObjective: t("Project-05-ClientObjective"),
-      result: t("Project-05-Result"),
-      image: img5,
-      galleryImages: [img5, img3, img4],
-      tags: [t("Tag-Retail"), t("Tag-MEP"), t("Tag-LightingDesign")],
-      details: {
-        client: "Optical Store",
-        scope: t("Project-05-Scope"),
-        duration: t("Project-05-Duration"),
-        area: t("Project-05-Area"),
-        highlights: [
-          t("Project-05-Highlight-1"),
-          t("Project-05-Highlight-2"),
-          t("Project-05-Highlight-3"),
-          t("Project-05-Highlight-4"),
-          t("Project-05-Highlight-5"),
-        ],
-      },
-    },
-    {
-      id: 6,
-      number: "06",
-      title: t("Project-06-Title"),
-      category: t("Project-06-Category"),
-      location: t("Project-06-Location"),
-      year: "2023",
-      clientObjective: t("Project-06-ClientObjective"),
-      result: t("Project-06-Result"),
-      image: img6,
-      galleryImages: [img6, img1, img2],
-      tags: [t("Tag-DesignBuild"), t("Tag-Residential"), t("Tag-HighFinishing")],
-      details: {
-        client: "Luxury Residential",
-        scope: t("Project-06-Scope"),
-        duration: t("Project-06-Duration"),
-        area: t("Project-06-Area"),
-        highlights: [
-          t("Project-06-Highlight-1"),
-          t("Project-06-Highlight-2"),
-          t("Project-06-Highlight-3"),
-          t("Project-06-Highlight-4"),
-          t("Project-06-Highlight-5"),
-        ],
-      },
-    },
-  ];
-
-  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
-  const [activeImage, setActiveImage] = useState<StaticImageData | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   const modalRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
 
@@ -276,9 +114,9 @@ export default function Projects() {
     }
   }, [selectedProject]);
 
-  const openModal = (project: typeof projects[0]) => {
+  const openModal = (project: Project) => {
     setSelectedProject(project);
-    setActiveImage(project.image);
+    setActiveImage(project.thumbnail_url);
     document.body.style.overflow = "hidden";
   };
 
@@ -323,7 +161,7 @@ export default function Projects() {
 
           {/* Projects Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <div
                 key={project.id}
                 className="project-card group relative cursor-pointer"
@@ -335,8 +173,8 @@ export default function Projects() {
                   <div className="absolute inset-0">
                     <div className="w-full h-full transition-all duration-[1500ms] group-hover:scale-110">
                       <Image
-                        src={project.image}
-                        alt={project.title}
+                        src={project.thumbnail_url}
+                        alt={project.name}
                         fill
                         className="object-cover"
                       />
@@ -346,15 +184,18 @@ export default function Projects() {
                   </div>
 
                   {/* Content */}
-                  <div className="absolute inset-0 p-8 flex flex-col justify-between">
+                  <div
+                    className="absolute inset-0 p-8 flex flex-col justify-between"
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                  >
                     {/* Top: Number & Category */}
                     <div className="relative">
                       <div className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#c9a750]/30 to-[#8c6d3b]/30 group-hover:from-[#c9a750] group-hover:to-[#8c6d3b] transition-all duration-700 leading-none">
-                        {project.number}
+                        {(index + 1).toString().padStart(2, "0")}
                       </div>
                       <div className="mt-4">
                         <span className="inline-block px-4 py-1 bg-[#c9a750]/10 border border-[#c9a750]/30 rounded-full text-[#c9a750] text-xs font-semibold tracking-wider">
-                          {project.category}
+                          {project.type}
                         </span>
                       </div>
                     </div>
@@ -362,11 +203,15 @@ export default function Projects() {
                     {/* Bottom: Title & Info */}
                     <div>
                       {/* Divider Line */}
-                      <div className="h-px w-full bg-gradient-to-r from-[#c9a750] to-transparent mb-6 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"></div>
+                      <div
+                        className={`h-px w-full bg-gradient-to-r from-[#c9a750] to-transparent mb-6 transform ${locale === "ar" ? "origin-right" : "origin-left"} scale-x-0 group-hover:scale-x-100 transition-transform duration-700`}
+                      ></div>
 
                       {/* Title */}
-                      <h3 className="text-3xl font-bold text-[#e6d5c0] mb-3 tracking-wider">
-                        {project.title}
+                      <h3
+                        className={`text-3xl font-bold text-[#e6d5c0] mb-3 tracking-wider ${locale === "ar" ? "text-right" : "text-left"}`}
+                      >
+                        {project.name}
                       </h3>
 
                       {/* Location & Year */}
@@ -375,15 +220,15 @@ export default function Projects() {
                           <MapPin className="w-4 h-4" />
                           <span>{project.location}</span>
                         </div>
-                        <div className="flex items-center gap-2">
+                        {/* <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
                           <span>{project.year}</span>
-                        </div>
+                        </div> */}
                       </div>
 
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                        {project.tags.map((tag) => (
+                        {project.badges?.map((tag) => (
                           <span
                             key={tag}
                             className="text-xs text-[#c9a750] border border-[#c9a750]/20 px-3 py-1 rounded-full"
@@ -394,14 +239,16 @@ export default function Projects() {
                       </div>
 
                       {/* View More Indicator */}
-                      <div className="mt-4 flex items-center gap-2 text-[#c9a750] opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200">
+                      <div
+                        className={`mt-4 flex items-center gap-2 text-[#c9a750] opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 ${locale === "ar" ? "flex-row-reverse justify-end" : ""}`}
+                      >
                         <span className="text-sm font-semibold tracking-wider">
                           {t("VIEW PROJECT")}
                         </span>
                         {locale === "en" ? (
                           <ArrowRight className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300" />
                         ) : (
-                          <ArrowLeft className="w-4 h-4 transform group-hover:translate-x-2 transition-transform duration-300 mt-1 ms-2" />
+                          <ArrowLeft className="w-4 h-4 transform group-hover:-translate-x-2 transition-transform duration-300 mt-1 ms-2" />
                         )}
                       </div>
                     </div>
@@ -478,34 +325,34 @@ export default function Projects() {
                       {/* Main Image */}
                       <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-4">
                         <Image
-                          src={activeImage || selectedProject.image}
-                          alt={selectedProject.title}
+                          src={activeImage || selectedProject.thumbnail_url}
+                          alt={selectedProject.name}
                           fill
                           className="object-cover transition-all duration-500"
                         />
                         {/* Floating Number */}
                         <div className="absolute bottom-6 left-6">
                           <span className="text-8xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#c9a750]/60 to-[#8c6d3b]/40 leading-none select-none">
-                            {selectedProject.number}
+                            {projects.findIndex(p => p.id === selectedProject.id) !== -1 ? (projects.findIndex(p => p.id === selectedProject.id) + 1).toString().padStart(2, "0") : "01"}
                           </span>
                         </div>
                       </div>
 
                       {/* Gallery Images */}
                       <div className="grid grid-cols-3 gap-3">
-                        {selectedProject.galleryImages.map((img, idx) => (
+                        {selectedProject.images?.map((img, idx) => (
                           <div
                             key={idx}
-                            onClick={() => setActiveImage(img)}
+                            onClick={() => setActiveImage(img.image_url)}
                             className={`relative h-24 rounded-lg overflow-hidden border-2 cursor-pointer transition-all duration-300 ${
-                              activeImage === img
+                              activeImage === img.image_url
                                 ? "border-[#c9a750] scale-95 shadow-[0_0_15px_rgba(201,167,80,0.3)]"
                                 : "border-[#c9a750]/10 hover:border-[#c9a750]/40"
                             }`}
                           >
                             <Image
-                              src={img}
-                              alt={`${selectedProject.title} - Image ${idx + 1}`}
+                              src={img.image_url}
+                              alt={`${selectedProject.name} - Image ${idx + 1}`}
                               fill
                               className="object-cover hover:scale-110 transition-transform duration-500"
                             />
@@ -516,32 +363,39 @@ export default function Projects() {
                   </div>
 
                   {/* Right: Content Section */}
-                  <div className="flex-1 p-8 md:p-12 lg:p-16">
+                  <div
+                    className="flex-1 p-8 md:p-12 lg:p-16"
+                    dir={locale === "ar" ? "rtl" : "ltr"}
+                  >
                     <div className="max-w-2xl">
                       {/* Header */}
                       <div className="mb-10">
                         <div className="flex items-center gap-3 mb-4">
                           <span className="h-px w-8 bg-[#c9a750]"></span>
                           <span className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase">
-                            {selectedProject.category}
+                            {selectedProject.type}
                           </span>
                         </div>
-                        <h2 className="text-4xl md:text-5xl font-bold text-[#e6d5c0] mb-6 tracking-tight leading-tight">
-                          {selectedProject.title}
+                        <h2
+                          className={`text-4xl md:text-5xl font-bold text-[#e6d5c0] mb-6 tracking-tight leading-tight ${locale === "ar" ? "text-right" : "text-left"}`}
+                        >
+                          {selectedProject.name}
                         </h2>
-                        <div className="flex flex-wrap items-center gap-6 text-[#e6d5c0]/60">
+                        <div
+                          className={`flex flex-wrap items-center gap-6 text-[#e6d5c0]/60 ${locale === "ar" ? "justify-start" : ""}`}
+                        >
                           <div className="flex items-center gap-2">
                             <MapPin className="w-4 h-4 text-[#c9a750]" />
                             <span className="text-sm uppercase tracking-wider">
                               {selectedProject.location}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2">
+                          {/* <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-[#c9a750]" />
                             <span className="text-sm uppercase tracking-wider">
                               {selectedProject.year}
                             </span>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
 
@@ -549,21 +403,27 @@ export default function Projects() {
                       <div className="mb-12">
                         <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
                           {t("ClientObjective")}
-                          <span className="flex-1 h-px bg-gradient-to-r from-[#c9a750]/20 to-transparent"></span>
+                          <span
+                            className={`flex-1 h-px ${locale === "ar" ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-[#c9a750]/20 to-transparent`}
+                          ></span>
                         </h4>
-                        <p className="text-[#e6d5c0]/80 text-lg leading-relaxed italic">
-                          &quot;{selectedProject.clientObjective}&quot;
+                        <p
+                          className={`text-[#e6d5c0]/80 text-lg leading-relaxed italic ${locale === "ar" ? "text-right" : "text-left"}`}
+                        >
+                          &quot;{selectedProject.short_desc}&quot;
                         </p>
                       </div>
 
                       {/* Info Grid */}
-                      <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 py-8 border-y border-[#c9a750]/10 text-center md:text-left">
+                      <div
+                        className={`grid grid-cols-2 md:grid-cols-3 gap-8 mb-12 py-8 border-y border-[#c9a750]/10 text-center ${locale === "ar" ? "md:text-right" : "md:text-left"}`}
+                      >
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2">
                             {t("Scope")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
-                            {selectedProject.details.scope}
+                            {selectedProject.type}
                           </p>
                         </div>
                         <div>
@@ -571,54 +431,64 @@ export default function Projects() {
                             {t("SizeArea")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
-                            {selectedProject.details.area}
+                            {selectedProject.area}
                           </p>
                         </div>
                         <div>
                           <h4 className="text-[#c9a750]/50 text-xs font-bold tracking-[0.2em] uppercase mb-2 whitespace-nowrap">
-                            {t("DeliveryTimeline")}
+                            {t("Client")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
-                            {selectedProject.details.duration}
+                            {selectedProject.client}
                           </p>
                         </div>
                       </div>
 
                       {/* Highlights */}
-                      <div className="mb-12">
-                        <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
-                          {t("Key Highlights")}
-                          <span className="flex-1 h-px bg-gradient-to-r from-[#c9a750]/20 to-transparent"></span>
-                        </h4>
-                        <div className="grid grid-cols-1 gap-4">
-                          {selectedProject.details.highlights.map(
-                            (highlight, index) => (
+                      {selectedProject.badges && selectedProject.badges.length > 0 && (
+                        <div className="mb-12">
+                          <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-6 flex items-center gap-3">
+                            {t("Key Highlights")}
+                            <span
+                              className={`flex-1 h-px ${locale === "ar" ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-[#c9a750]/20 to-transparent`}
+                            ></span>
+                          </h4>
+                          <div className="grid grid-cols-1 gap-4">
+                            {selectedProject.badges.map((highlight, index) => (
                               <div
                                 key={index}
                                 className="flex items-start gap-3 p-4 bg-[#171410]/30 border border-[#c9a750]/5 rounded-2xl hover:border-[#c9a750]/20 transition-all duration-300"
                               >
                                 <div className="flex-shrink-0 w-1.5 h-1.5 mt-2 bg-[#c9a750] rounded-full"></div>
-                                <p className="text-[#e6d5c0]/70 text-sm leading-relaxed">
+                                <p
+                                  className={`text-[#e6d5c0]/70 text-sm leading-relaxed ${locale === "ar" ? "text-right" : "text-left"}`}
+                                >
                                   {highlight}
                                 </p>
                               </div>
-                            ),
-                          )}
+                            ))}
+                          </div>
                         </div>
-                      </div>
+                      )}
 
                       {/* Result */}
-                      <div className="mb-6">
-                        <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
-                          {t("Result")}
-                          <span className="flex-1 h-px bg-gradient-to-r from-[#c9a750]/20 to-transparent"></span>
-                        </h4>
-                        <div className="p-5 rounded-2xl bg-[#c9a750]/5 border border-[#c9a750]/10">
-                          <p className="text-[#e6d5c0] text-base leading-relaxed font-medium">
-                            {selectedProject.result}
-                          </p>
+                      {selectedProject.long_desc && (
+                        <div className="mb-6">
+                          <h4 className="text-[#c9a750] text-sm font-bold tracking-[0.2em] uppercase mb-4 flex items-center gap-3">
+                            {t("Result")}
+                            <span
+                              className={`flex-1 h-px ${locale === "ar" ? "bg-gradient-to-l" : "bg-gradient-to-r"} from-[#c9a750]/20 to-transparent`}
+                            ></span>
+                          </h4>
+                          <div className="p-5 rounded-2xl bg-[#c9a750]/5 border border-[#c9a750]/10">
+                            <p
+                              className={`text-[#e6d5c0] text-base leading-relaxed font-medium ${locale === "ar" ? "text-right" : "text-left"}`}
+                            >
+                              {selectedProject.long_desc}
+                            </p>
+                          </div>
                         </div>
-                      </div>
+                      )}
                     </div>
                   </div>
                 </div>

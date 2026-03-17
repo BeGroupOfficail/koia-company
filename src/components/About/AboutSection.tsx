@@ -6,8 +6,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap/all";
 import aboutImg from "@/assets/3.jpg";
 import { useTranslations } from "next-intl";
+import { About, Statistic } from "@/types/homeApiTypes";
+import { Check } from "lucide-react";
 
-export default function AboutSection() {
+export default function AboutSection({ about, statistics }: { about: About, statistics: Statistic[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const statRefs = useRef<(HTMLDivElement | null)[]>([]);
   const t = useTranslations("home");
@@ -129,41 +131,27 @@ export default function AboutSection() {
     );
   }, []);
 
-  const stats = [
-    { number: 50, label: t("Projects Delivered") },
-    { number: 145, label: t("Collaborations") },
-    { number: 300, label: t("Business Clients Reached") },
-    { number: 8, label: t("Projects Per Year") },
-  ];
-
   const values = [t("QUALITY"), t("CLARITY"), t("TIME SAVING")];
 
-  const bulletPoints = [
-    { label: t("Executive-Level Project Oversight"),   icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
-    { label: t("Transparent Financial Tracking"),       icon: "M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" },
-    { label: t("Controlled Timeline Execution"),        icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
-    { label: t("Risk Anticipation & Mitigation"),       icon: "M20.618 5.984A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016zM12 9v2m0 4h.01" },
-    { label: t("Structured Reporting & Accountability"),icon: "M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" },
-  ];
-
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="relative overflow-hidden pt-28 pb-20 px-6 md:px-12 lg:px-20"
-    >
+    <>
+      <section
+        id="about"
+        ref={sectionRef}
+        className="relative overflow-hidden pt-28 pb-20 px-6 md:px-12 lg:px-20"
+      >
       <div className="relative max-w-7xl mx-auto">
 
         {/* ── CENTERED HEADER ── */}
         <div className="about-header text-center mb-20">
           <div className="inline-block mb-6">
-            <span className="text-[#c9a750] text-xs font-bold tracking-[0.5em] uppercase">{t("About Us")}</span>
+            <span className="text-[#c9a750] text-xs font-bold tracking-[0.5em] uppercase">{t("About")}</span>
             <div className="about-header-line h-0.5 w-full bg-gradient-to-r from-transparent via-[#c9a750] to-transparent mt-2"></div>
           </div>
-          <h2 className="text-5xl md:text-7xl font-black leading-[1.05] tracking-tight">
-            <span className="text-[#e6d5c0] block">{t("About-section").split(".")[0]}</span>
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#c9a750] via-[#e6c97a] to-[#b2913c] animate-gradient mt-3">
-              {t("About-section").split(".")[1]}
+            <h2 className="text-6xl md:text-[100px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#c9a750] via-[#b2913c] to-[#8c6d3b] leading-tight">
+            {t("ABOUT_TITLE_PART1")}{" "}
+              <span className="text-[#e6d5c0] animate-gradient">
+              {t("ABOUT_TITLE_PART2")}
             </span>
           </h2>
         </div>
@@ -175,14 +163,17 @@ export default function AboutSection() {
           <div className="about-description flex flex-col gap-10">
             {/* Bullet list – 2-col grid, last item full-width */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {bulletPoints.map((point, i) => (
-                <div key={i} className={`group flex items-center gap-4 p-4 rounded-xl border border-[#c9a750]/10 bg-[#1a1712] hover:border-[#c9a750]/35 transition-all duration-400${ i === bulletPoints.length - 1 ? " md:col-span-2" : ""}`}>
+              {about.badges?.map((point, i, arr) => (
+                <div
+                  key={i} 
+                  className={`group flex items-center gap-4 p-4 rounded-xl border border-[#c9a750]/10 bg-[#1a1712] hover:border-[#c9a750]/35 transition-all duration-400 ${
+                    i === arr.length - 1 && arr.length % 2 !== 0 ? "md:col-span-2" : ""
+                  }`}
+                >
                   <div className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center bg-[#c9a750]/8 text-[#c9a750] group-hover:bg-[#c9a750] group-hover:text-[#171410] transition-all duration-400">
-                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8">
-                      <path strokeLinecap="round" strokeLinejoin="round" d={point.icon} />
-                    </svg>
+                    <Check className="w-4 h-4" strokeWidth={2.5} />
                   </div>
-                  <span className="text-[#e6d5c0]/80 text-sm font-semibold leading-snug group-hover:text-[#e6d5c0] transition-colors">{point.label}</span>
+                  <span className="text-[#e6d5c0]/80 text-sm font-semibold leading-snug group-hover:text-[#e6d5c0] transition-colors">{point}</span>
                 </div>
               ))}
             </div>
@@ -195,9 +186,10 @@ export default function AboutSection() {
             </div>
 
             {/* Specialisation */}
-            <p className="text-[#e6d5c0]/60 text-base md:text-lg leading-relaxed">
-              {t("Specialization")}
-            </p>
+            <div 
+              className="text-[#e6d5c0]/60 text-base md:text-lg leading-relaxed"
+              dangerouslySetInnerHTML={{ __html: about.description }}
+            />
 
             {/* Value Pills – refined */}
             <div className="flex flex-wrap gap-3 pt-2">
@@ -214,8 +206,8 @@ export default function AboutSection() {
           <div className="hidden lg:flex about-content-right self-stretch">
             <div className="relative w-full rounded-3xl overflow-hidden border border-[#c9a750]/20 group hover:border-[#c9a750]/50 transition-all duration-700 shadow-2xl min-h-[500px]">
               <Image
-                src={aboutImg}
-                alt="KOIA Execution"
+                src={about.image_url ?? aboutImg}
+                alt={about.alt_image || "KOIA Execution"}
                 fill
                 className="object-cover brightness-90 group-hover:scale-105 group-hover:brightness-100 transition-all duration-[2000ms]"
               />
@@ -229,24 +221,24 @@ export default function AboutSection() {
 
         {/* ── STATS — untouched ── */}
         <div className="about-stats-container grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {stats.map((stat, index) => (
+          {statistics.map((stat, index) => (
             <div
-              key={stat.label}
+              key={stat.id}
               className="about-stat-item group relative text-center py-10 px-4 md:px-8 bg-gradient-to-br from-[#1f1b16] to-[#171410] rounded-3xl border border-[#c9a750]/10 hover:border-[#c9a750]/40 transition-all duration-500 hover:shadow-2xl hover:shadow-[#c9a750]/5 overflow-hidden"
             >
-              <span className="pointer-events-none absolute -bottom-6 -right-4 text-[9rem] font-black text-[#c9a750]/4 leading-none select-none group-hover:text-[#c9a750]/8 transition-colors">{stat.number}</span>
+              <span className="pointer-events-none absolute -bottom-6 -right-4 text-[9rem] font-black text-[#c9a750]/4 leading-none select-none group-hover:text-[#c9a750]/8 transition-colors">{stat.count}</span>
 
               <div className="relative z-10">
                 <div
                   ref={(el) => { statRefs.current[index] = el; }}
-                  data-value={stat.number}
+                  data-value={stat.count}
                   className="text-5xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-br from-[#c9a750] via-[#b2913c] to-[#8c6d3b] mb-4"
                 >
                   0+
                 </div>
                 <div className="h-px w-10 bg-[#c9a750] mx-auto mb-4 group-hover:w-16 transition-all duration-500"></div>
                 <div className="text-[#e6d5c0]/60 text-xs md:text-sm font-bold uppercase tracking-widest leading-relaxed">
-                  {stat.label}
+                  {stat.title}
                 </div>
               </div>
             </div>
@@ -257,6 +249,23 @@ export default function AboutSection() {
         <div className="about-divider mt-20 h-px bg-gradient-to-r from-transparent via-[#c9a750]/20 to-transparent"></div>
       </div>
     </section>
+      <style jsx>{`
+        @keyframes gradient {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        .animate-gradient {
+          background-size: 200% 200%;
+          animation: gradient 3s ease infinite;
+        }
+      `}</style>
+    </>
   );
 }
 

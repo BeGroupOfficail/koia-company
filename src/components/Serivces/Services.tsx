@@ -9,10 +9,11 @@ import serviceImg2 from "@/assets/service2.jpg";
 import serviceImg3 from "@/assets/service3.jpg";
 import serviceImg4 from "@/assets/serivce4.jpg";
 import { useLocale, useTranslations } from "next-intl";
+import { Service } from "@/types/homeApiTypes";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function KoiaServicesSection() {
+export default function KoiaServicesSection({ services }: { services: Service[] }) {
   const sectionRef = useRef<HTMLElement>(null);
   const t = useTranslations("home");
   const locale = useLocale();
@@ -76,38 +77,6 @@ export default function KoiaServicesSection() {
     return () => ctx.revert();
   }, []);
 
-  const services = [
-    {
-      number: "01",
-      title: t("Service-01-Title"),
-      subtitle: t("Service-01-Subtitle"),
-      description: t("Service-01-Description"),
-      image: serviceImg1,
-    },
-    {
-      number: "02",
-      title: t("Service-02-Title"),
-      subtitle: t("Service-02-Subtitle"),
-      description: t("Service-02-Description"),
-      image: serviceImg2,
-    },
-    {
-      number: "03",
-      title: t("Service-03-Title"),
-      subtitle: t("Service-03-Subtitle"),
-      description: t("Service-03-Description"),
-      image: serviceImg3,
-    },
-    {
-      number: "04",
-      title: t("Service-04-Title"),
-      subtitle: t("Service-04-Subtitle"),
-      description: t("Service-04-Description"),
-      image: serviceImg4,
-    },
-  ];
-
-
   return (
     <section
       id="services"
@@ -134,15 +103,15 @@ export default function KoiaServicesSection() {
         {/* Services Horizontal Scroll */}
         <div className="relative">
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-            {services.map((service) => (
-              <div key={service.number} className="service-card group relative">
+            {services.map((service, i) => (
+              <div key={service.id} className="service-card group relative">
                 {/* Card Container */}
                 <div className="relative h-[500px] rounded-3xl overflow-hidden border border-[#c9a750]/20 hover:border-[#c9a750]/60 transition-all duration-1000 ease-out">
                   {/* Background Image */}
                   <div className="absolute inset-0">
                     <Image
-                      src={service.image}
-                      alt={service.title}
+                      src={service.image_url}
+                      alt={service.alt_image || "KOIA Service"}
                       fill
                       className="w-full h-full object-cover transition-all duration-[1500ms] group-hover:scale-110 group-hover:brightness-75 ease-out"
                     />
@@ -155,7 +124,7 @@ export default function KoiaServicesSection() {
                     {/* Top: Number */}
                     <div className="relative">
                       <div className="text-9xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-[#c9a750]/30 to-[#8c6d3b]/30 group-hover:from-[#c9a750] group-hover:to-[#8c6d3b] transition-all duration-700 leading-none">
-                        {service.number}
+                        {i + 1}
                       </div>
                     </div>
 
@@ -166,15 +135,15 @@ export default function KoiaServicesSection() {
 
                       {/* Title */}
                       <h3 className="text-4xl font-bold text-[#e6d5c0] mb-2 tracking-wider">
-                        {service.title}
+                        {service.name}
                       </h3>
                       <h4 className="text-xl font-semibold text-[#c9a750] mb-4 tracking-wide">
-                        {service.subtitle}
+                        {service.short_desc}
                       </h4>
 
                       {/* Description */}
                       <p className="text-[#e6d5c0]/70 text-base leading-relaxed transform opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100 italic">
-                        {service.description}
+                        {service.short_desc}
                       </p>
 
                     </div>

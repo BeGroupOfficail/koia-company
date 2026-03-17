@@ -14,7 +14,9 @@
   "Sections": "الأقسام",
   "About Us": "لماذا KOIA",
   "Our Services": "خدماتنا",
-  "About-section": "KOIA بنيت للأعمال ليست مجرد ديكورات داخلية",
+  "KOIA Built for Business Not Just Interiors": "KOIA بنيت للأعمال ليست مجرد ديكورات داخلية",
+  "ABOUT_TITLE_PART1": "KOIA",
+  "ABOUT_TITLE_PART2": "بنيت للأعمال ليست مجرد ديكورات داخلية",
   "Our Expertise": "خبرتنا",
   "OUR": "خدماتنا",
   "SERVICES": "الخدمات",
@@ -116,6 +118,7 @@
   "SizeArea": "المساحة",
   "DeliveryTimeline": "الجدول الزمني للتسليم",
   "Result": "النتيجة",
+  "Client": "العميل",
   "Project-01-Title": "Be group – تنفيذ التشطيبات المتكاملة",
   "Project-01-Category": "مكتب إداري",
   "Project-01-Location": "القاهرة",
@@ -209,5 +212,11 @@
   "Tag-HighFinishing": "تشطيب راقي",
   "Phone-Label": "الهاتف",
   "Email-Label": "البريد الإلكتروني",
-  "Location-Label": "الموقع"
+  "Location-Label": "الموقع",
+  "FAILED-TO-SEND-MESSAGE": "فشل إرسال الرسالة. يرجى المحاولة مرة أخرى لاحقاً.",
+  "PLEASE-FIX-ERRORS": "يرجى تصحيح الأخطاء في النموذج قبل الإرسال.",
+  "Name must be at least 2 characters": "يجب أن يكون الاسم حرفين على الأقل",
+  "Please enter a valid email address": "يرجى إدخال بريد إلكتروني صالح",
+  "Please enter a valid phone number": "يرجى إدخال رقم هاتف صالح",
+  "Message must be at least 10 characters": "يجب أن تكون الرسالة 10 أحرف على الأقل"
 }

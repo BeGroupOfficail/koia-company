@@ -1,8 +1,9 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Section } from "@/types/homeApiTypes";
 
-export default function ExecutionStandard() {
+export default function ExecutionStandard({ sections }: { sections: Section[] }) {
   const t = useTranslations("home");
 
   const standardsList = [

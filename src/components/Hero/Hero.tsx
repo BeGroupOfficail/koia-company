@@ -1,41 +1,24 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import img1 from "@/assets/service1.jpg";
-import img2 from "@/assets/service2.jpg";
-import img3 from "@/assets/service3.jpg";
-import img4 from "@/assets/serivce4.jpg";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { useTranslations } from "next-intl";
-
-interface Project {
-  id: number;
-  image: string | StaticImageData;
-  title: string;
-}
+import { Home } from "@/types/homeApiTypes";
+import { cleanImageUrl } from "@/lib/utils";
 
 const HEADER_HEIGHT = 64;
 
-export default function HeroSection() {
+export default function HeroSection({ home }: { home: Home }) {
   const [currentSlide, setCurrentSlide] = useState(0);
   const t = useTranslations("home");
-
-  // Sample projects - replace with your actual project data
-  const projects: Project[] = [
-    { id: 1, image: img1, title: "Luxury Office" },
-    { id: 2, image: img2, title: "Modern Workspace" },
-    { id: 3, image: img3, title: "Executive Suite" },
-    { id: 4, image: img4, title: "Corporate Lobby" },
-  ];
-
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % projects.length);
+      setCurrentSlide((prev) => (prev + 1) % home.sliders.length);
     }, 5000);
     return () => clearInterval(timer);
-  }, [projects.length]);
+  }, [home.sliders.length]);
 
   const handleScroll = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -64,9 +47,9 @@ export default function HeroSection() {
     >
       {/* Animated Background Slider */}
       <div className="absolute inset-0">
-        {projects.map((project, index) => (
+        {home.sliders.map((slider, index) => (
           <div
-            key={project.id}
+            key={slider.id}
             className={`absolute inset-0 transition-all duration-1000 ease-in-out ${
               index === currentSlide
                 ? "opacity-100 scale-100"
@@ -75,8 +58,10 @@ export default function HeroSection() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-[var(--color-dark-ui)]/75 via-[var(--color-dark-ui)]/85 to-[var(--color-dark-secondary)]/75 z-10" />
             <Image
-              src={project.image}
-              alt={project.title}
+              src={cleanImageUrl(slider.image_url)}
+              alt={slider.alt_image || slider.title}
+              width={1920}
+              height={1080}
               className="w-full h-full object-cover"
             />
           </div>
@@ -101,10 +86,10 @@ export default function HeroSection() {
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-[var(--color-text-secondary)]/80 mb-5 xl:mb-10 max-w-2xl leading-relaxed animate-fade-in-up-delay-2 opacity-0">
-              {t("Subheadline")}
-            </p>
-
+            <div
+              className="text-lg md:text-xl text-[var(--color-text-secondary)]/80 mb-5 xl:mb-10 max-w-2xl leading-relaxed animate-fade-in-up-delay-2 opacity-0"
+              dangerouslySetInnerHTML={{ __html: home.description }}
+            />
 
             {/* CTA Button */}
             <div className="flex flex-wrap gap-4 animate-fade-in-up-delay-3 opacity-0">
@@ -122,7 +107,7 @@ export default function HeroSection() {
 
             {/* Slide Indicators */}
             <div className="flex gap-2 mt-8 xl:mt-12 animate-fade-in-up-delay-4 opacity-0">
-              {projects.map((_, index) => (
+              {home.sliders.map((_, index) => (
                 <button
                   key={index}
                   suppressHydrationWarning

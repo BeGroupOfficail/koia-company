@@ -12,7 +12,7 @@ export type ContactFormData = {
 export async function sendContactData(formData: ContactFormData) {
   try {
     const response = await fetch(
-      `${NEXT_PUBLIC_BACKEND_BASE_URL}/save-contact-us`,
+      `${NEXT_PUBLIC_BACKEND_BASE_URL}/contact-message`,
       {
         method: "POST",
         headers: {
