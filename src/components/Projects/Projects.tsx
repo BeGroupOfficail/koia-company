@@ -8,6 +8,7 @@ import Image from "next/image";
 import { X, ArrowRight, MapPin, ArrowLeft } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Project } from "@/types/homeApiTypes";
+import { cleanImageUrl } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -173,7 +174,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                   <div className="absolute inset-0">
                     <div className="w-full h-full transition-all duration-[1500ms] group-hover:scale-110">
                       <Image
-                        src={project.thumbnail_url}
+                        src={cleanImageUrl(project.thumbnail_url)}
                         alt={project.name}
                         fill
                         className="object-cover"
@@ -325,7 +326,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                       {/* Main Image */}
                       <div className="relative h-[300px] md:h-[400px] rounded-2xl overflow-hidden mb-4">
                         <Image
-                          src={activeImage || selectedProject.thumbnail_url}
+                          src={cleanImageUrl(activeImage || selectedProject.thumbnail_url)}
                           alt={selectedProject.name}
                           fill
                           className="object-cover transition-all duration-500"
@@ -351,7 +352,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                             }`}
                           >
                             <Image
-                              src={img.image_url}
+                              src={cleanImageUrl(img.image_url)}
                               alt={`${selectedProject.name} - Image ${idx + 1}`}
                               fill
                               className="object-cover hover:scale-110 transition-transform duration-500"

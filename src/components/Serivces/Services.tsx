@@ -4,12 +4,9 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import serviceImg1 from "@/assets/service1.jpg";
-import serviceImg2 from "@/assets/service2.jpg";
-import serviceImg3 from "@/assets/service3.jpg";
-import serviceImg4 from "@/assets/serivce4.jpg";
 import { useLocale, useTranslations } from "next-intl";
 import { Service } from "@/types/homeApiTypes";
+import { cleanImageUrl } from "@/lib/utils";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -110,7 +107,7 @@ export default function KoiaServicesSection({ services }: { services: Service[] 
                   {/* Background Image */}
                   <div className="absolute inset-0">
                     <Image
-                      src={service.image_url}
+                      src={cleanImageUrl(service.image_url)}
                       alt={service.alt_image || "KOIA Service"}
                       fill
                       className="w-full h-full object-cover transition-all duration-[1500ms] group-hover:scale-110 group-hover:brightness-75 ease-out"
@@ -137,9 +134,9 @@ export default function KoiaServicesSection({ services }: { services: Service[] 
                       <h3 className="text-4xl font-bold text-[#e6d5c0] mb-2 tracking-wider">
                         {service.name}
                       </h3>
-                      <h4 className="text-xl font-semibold text-[#c9a750] mb-4 tracking-wide">
+                      {/* <h4 className="text-xl font-semibold text-[#c9a750] mb-4 tracking-wide">
                         {service.short_desc}
-                      </h4>
+                      </h4> */}
 
                       {/* Description */}
                       <p className="text-[#e6d5c0]/70 text-base leading-relaxed transform opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-700 delay-100 italic">
