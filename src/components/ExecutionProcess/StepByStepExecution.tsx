@@ -52,7 +52,7 @@ export default function StepByStepExecution({ sections }: { sections: Section[] 
   const isRtl = locale === "ar";
 
   return (
-    <div className="py-24">
+    <div className="py-12 lg:py-24">
       <div className="mb-20 text-center">
         <div className="ep-label inline-block mb-5">
           <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("Our Process")}</span>

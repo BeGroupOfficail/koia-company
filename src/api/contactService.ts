@@ -4,8 +4,8 @@ export type ContactFormData = {
   name: string;
   email: string;
   phone: string;
-  jobTitle?: string;
-  companyName?: string;
+  job_title?: string;
+  company_name?: string;
   message: string;
 };
 

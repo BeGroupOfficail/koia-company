@@ -5,7 +5,7 @@ import { createPortal } from "react-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { X, ArrowRight, MapPin, ArrowLeft } from "lucide-react";
+import { X, ArrowRight, MapPin, ArrowLeft, Calendar } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { Project } from "@/types/homeApiTypes";
 import { cleanImageUrl } from "@/lib/utils";
@@ -141,7 +141,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
       <section
         id="projects"
         ref={sectionRef}
-        className="relative min-h-screen overflow-hidden pb-20 pt-5 px-6 md:px-12 lg:px-20"
+        className="relative min-h-screen overflow-hidden lg:pb-20 pt-5 px-6 md:px-12 lg:px-20"
       >
         <div className="relative max-w-[1600px] mx-auto">
           {/* Header */}
@@ -221,10 +221,10 @@ export default function Projects({ projects }: { projects: Project[] }) {
                           <MapPin className="w-4 h-4" />
                           <span>{project.location}</span>
                         </div>
-                        {/* <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2">
                           <Calendar className="w-4 h-4" />
-                          <span>{project.year}</span>
-                        </div> */}
+                          <span>{project.date}</span>
+                        </div>
                       </div>
 
                       {/* Tags */}
@@ -241,7 +241,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
 
                       {/* View More Indicator */}
                       <div
-                        className={`mt-4 flex items-center gap-2 text-[#c9a750] opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200 ${locale === "ar" ? "flex-row-reverse justify-end" : ""}`}
+                        className={`mt-4 flex items-center gap-2 text-[#c9a750] opacity-0 group-hover:opacity-100 transition-all duration-700 delay-200`}
                       >
                         <span className="text-sm font-semibold tracking-wider">
                           {t("VIEW PROJECT")}
@@ -269,14 +269,14 @@ export default function Projects({ projects }: { projects: Project[] }) {
                 END TO END EXECUTION
               </h3> */}
 
-              <h4 className="text-xl md:text-2xl font-semibold text-[#e6d5c0]/80 tracking-[0.2em]">
+              <h4 className={`${locale === "en" ? "text-xs" : "text-sm"} md:text-2xl font-semibold text-[#e6d5c0]/80 tracking-[0.2em]`}>
                 {t("END TO END EXECUTION COLLABORATION WITH OTHER COMPANIES")}
               </h4>
 
               {/* Divider */}
               <div className="h-px w-full bg-gradient-to-r from-transparent via-[#c9a750] to-transparent"></div>
 
-              <div className="text-[#e6d5c0]/70 text-sm md:text-base flex flex-wrap justify-center gap-x-2 gap-y-2">
+              <div className={`text-[#e6d5c0]/70 ${locale === "en" ? "text-xs" : "text-sm"} md:text-base flex flex-wrap justify-center gap-x-2 gap-y-2`}>
                 <span>Magrabi</span>
                 <span>-</span>
                 <span>PAUL Restaurant & Cafe</span>
@@ -391,12 +391,12 @@ export default function Projects({ projects }: { projects: Project[] }) {
                               {selectedProject.location}
                             </span>
                           </div>
-                          {/* <div className="flex items-center gap-2">
+                          <div className="flex items-center gap-2">
                             <Calendar className="w-4 h-4 text-[#c9a750]" />
                             <span className="text-sm uppercase tracking-wider">
-                              {selectedProject.year}
+                              {selectedProject.date}
                             </span>
-                          </div> */}
+                          </div>
                         </div>
                       </div>
 

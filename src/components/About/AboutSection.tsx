@@ -143,12 +143,12 @@ export default function AboutSection({ about, statistics }: { about: About, stat
       <div className="relative max-w-7xl mx-auto">
 
         {/* ── CENTERED HEADER ── */}
-        <div className="about-header text-center mb-20">
+        <div className="about-header text-center mb-10 xl:mb-20">
           <div className="inline-block mb-6">
             <span className="text-[#c9a750] text-xs font-bold tracking-[0.5em] uppercase">{t("About")}</span>
             <div className="about-header-line h-0.5 w-full bg-gradient-to-r from-transparent via-[#c9a750] to-transparent mt-2"></div>
           </div>
-            <h2 className="text-6xl md:text-[100px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#c9a750] via-[#b2913c] to-[#8c6d3b] leading-tight">
+            <h2 className="text-[55px] md:text-[100px] font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#c9a750] via-[#b2913c] to-[#8c6d3b] leading-tight">
             {t("ABOUT_TITLE_PART1")}{" "}
               <span className="text-[#e6d5c0] animate-gradient">
               {t("ABOUT_TITLE_PART2")}
@@ -157,13 +157,13 @@ export default function AboutSection({ about, statistics }: { about: About, stat
         </div>
 
         {/* ── MAIN CONTENT GRID ── */}
-        <div className="grid lg:grid-cols-2 gap-16 mb-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-16 mb-10 xl:mb-20 items-center">
 
           {/* LEFT: Capability list + quote + specialisation */}
           <div className="about-description flex flex-col gap-10">
             {/* Bullet list – 2-col grid, last item full-width */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {about.badges?.map((point, i, arr) => (
+                {about.badges?.map((point, i, arr) => (
                 <div
                   key={i} 
                   className={`group flex items-center gap-4 p-4 rounded-xl border border-[#c9a750]/10 bg-[#1a1712] hover:border-[#c9a750]/35 transition-all duration-400 ${

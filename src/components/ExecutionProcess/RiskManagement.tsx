@@ -48,7 +48,7 @@ export default function RiskManagement({ sections }: { sections: Section[] }) {
   ];
 
   return (
-    <div className="pt-20 pb-24">
+    <div className="pt-6 lg:pt-20 pb-10 lg:pb-24">
       <div className="mb-14 text-center">
         <div className="risk-label inline-block mb-5">
           <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("RiskManagement-Label")}</span>

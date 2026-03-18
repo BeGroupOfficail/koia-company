@@ -57,13 +57,13 @@ export default function QualityControl({ sections }: { sections: Section[] }) {
   ];
 
   return (
-    <div className="pt-24 pb-24 max-w-9xl mx-auto">
+    <div className="pt-12 lg:pt-24 pb-12 lg:pb-24 max-w-9xl mx-auto">
       <div className="mb-16 text-center">
         <div className="qc-label inline-block mb-5">
           <span className="text-xs font-bold tracking-[0.35em] uppercase" style={{ color: "#c9a750" }}>{t("QualityControl-Label")}</span>
           <div className="qc-header-line h-0.5 w-full mt-2" style={{ background: "linear-gradient(to right, transparent, #c9a750, transparent)" }}></div>
         </div>
-        <h2 className="qc-title text-6xl md:text-8xl font-bold leading-[1.1] tracking-tight uppercase w-full" style={{ color: "#e6d5c0" }}>
+        <h2 className="qc-title text-5xl md:text-8xl font-bold leading-[1.1] tracking-tight uppercase w-full" style={{ color: "#e6d5c0" }}>
           {t("OurQuality")}{" "}
           <span style={{ background: "linear-gradient(135deg, #c9a750 0%, #b2913c 50%, #8c6d3b 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
             {t("ControlProcess")}

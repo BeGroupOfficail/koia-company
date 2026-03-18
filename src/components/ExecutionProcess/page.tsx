@@ -26,17 +26,17 @@ export default function ExecutionProcess({ sections }: { sections: Section[] }) 
   useGSAP(
     () => {
       // Risk
-      gsap.from(".risk-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".risk-label", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".risk-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".risk-label", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".risk-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".risk-title", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".risk-card", { y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: ".risk-grid", start: "top 80%", toggleActions: "play none none reverse" } });
+      gsap.from(".risk-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".risk-label", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".risk-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".risk-label", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".risk-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".risk-title", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".risk-card", { y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: ".risk-grid", start: "top 65%", toggleActions: "play none none reverse" } });
 
       // Quality
-      gsap.from(".qc-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".qc-label", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".qc-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".qc-label", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".qc-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".qc-title", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".qc-row", { x: -40, opacity: 0, duration: 0.75, stagger: 0.14, ease: "power3.out", scrollTrigger: { trigger: ".qc-list", start: "top 80%", toggleActions: "play none none reverse" } });
-      gsap.from(".qc-line", { scaleY: 0, transformOrigin: "top center", duration: 0.9, ease: "power2.out", scrollTrigger: { trigger: ".qc-list", start: "top 78%", toggleActions: "play none none reverse" } });
+      gsap.from(".qc-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".qc-label", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".qc-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".qc-label", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".qc-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".qc-title", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".qc-row", { x: -40, opacity: 0, duration: 0.75, stagger: 0.14, ease: "power3.out", scrollTrigger: { trigger: ".qc-list", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".qc-line", { scaleY: 0, transformOrigin: "top center", duration: 0.9, ease: "power2.out", scrollTrigger: { trigger: ".qc-list", start: "top 65%", toggleActions: "play none none reverse" } });
 
       // Standards — once only, never reverse to invisible
       gsap.from(".std-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".std-label", start: "top 87%", toggleActions: "play none none none" } });
@@ -77,9 +77,9 @@ export default function ExecutionProcess({ sections }: { sections: Section[] }) 
       gsap.from(".std-statement", { y: 30, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".std-statement", start: "top 85%", toggleActions: "play none none none" } });
 
       // Execution steps
-      gsap.from(".ep-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".ep-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-title", start: "top 87%", toggleActions: "play none none reverse" } });
-      gsap.from(".ep-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 87%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-label", { y: 24, opacity: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-title", { y: 50, opacity: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-title", start: "top 65%", toggleActions: "play none none reverse" } });
+      gsap.from(".ep-header-line", { scaleX: 0, transformOrigin: "center", duration: 1, ease: "power3.out", scrollTrigger: { trigger: ".ep-label", start: "top 65%", toggleActions: "play none none reverse" } });
       gsap.from(".exec-card", { y: 80, opacity: 0, duration: 0.85, stagger: 0.18, ease: "power3.out", scrollTrigger: { trigger: ".exec-steps", start: "top 78%", toggleActions: "play none none reverse" } });
       gsap.from(".exec-connector", { scaleX: 0, transformOrigin: "left center", duration: 0.7, stagger: 0.18, delay: 0.3, ease: "power2.out", scrollTrigger: { trigger: ".exec-steps", start: "top 75%", toggleActions: "play none none reverse" } });
     },

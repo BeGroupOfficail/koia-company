@@ -15,8 +15,8 @@ type ContactFormData = {
   name: string;
   email: string;
   phone: string;
-  jobTitle?: string;
-  companyName?: string;
+  job_title?: string;
+  company_name?: string;
   message: string;
 };
 
@@ -25,8 +25,8 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
     name: "",
     email: "",
     phone: "",
-    jobTitle: "",
-    companyName: "",
+    job_title: "",
+    company_name: "",
     message: "",
   });
   const [errors, setErrors] = useState<
@@ -47,8 +47,8 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
     name: z.string().min(2, t("Name must be at least 2 characters")),
     email: z.string().email(t("Please enter a valid email address")),
     phone: z.string().min(10, t("Please enter a valid phone number")),
-    jobTitle: z.string().optional(),
-    companyName: z.string().optional(),
+    job_title: z.string().optional(),
+    company_name: z.string().optional(),
     message: z.string().min(10, t("Message must be at least 10 characters")),
   });
 
@@ -56,7 +56,7 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: "top 70%",
+        start: "top 65%",
         end: "bottom 80%",
         toggleActions: "play none none reverse",
       },
@@ -166,8 +166,8 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
           name: "",
           email: "",
           phone: "",
-          jobTitle: "",
-          companyName: "",
+          job_title: "",
+          company_name: "",
           message: "",
         });
       } else {
@@ -276,7 +276,7 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
     >
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-20">
+        <div className="text-center mb-10 lg:mb-20">
           <div className="contact-header inline-block mb-6">
             <span className="text-[#c9a750] text-sm font-semibold tracking-[0.3em] uppercase">
               {t("Get In Touch")}
@@ -458,9 +458,9 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
                   {/* Job Title Field */}
                   <div className="relative">
                     <label
-                      htmlFor="jobTitle"
+                      htmlFor="job_title"
                       className={`absolute ${locale === "en" ? "left-4" : "right-4"} transition-all duration-300 pointer-events-none ${
-                        focusedField === "jobTitle" || formData.jobTitle
+                        focusedField === "job_title" || formData.job_title
                           ? "-top-6 text-[#c9a750]"
                           : "top-4 text-base text-[#e6d5c0]/50"
                       }`}
@@ -469,11 +469,11 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
                     </label>
                     <input
                       type="text"
-                      id="jobTitle"
-                      name="jobTitle"
-                      value={formData.jobTitle || ""}
+                      id="job_title"
+                      name="job_title"
+                      value={formData.job_title || ""}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField("jobTitle")}
+                      onFocus={() => setFocusedField("job_title")}
                       onBlur={() => setFocusedField(null)}
                       className={`w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
@@ -483,9 +483,9 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
                   {/* Company Name Field */}
                   <div className="relative">
                     <label
-                      htmlFor="companyName"
+                      htmlFor="company_name"
                       className={`absolute ${locale === "en" ? "left-4" : "right-4"} transition-all duration-300 pointer-events-none ${
-                        focusedField === "companyName" || formData.companyName
+                        focusedField === "company_name" || formData.company_name
                           ? "-top-6 text-[#c9a750]"
                           : "top-4 text-base text-[#e6d5c0]/50"
                       }`}
@@ -494,11 +494,11 @@ export default function KoiaContactSection({ contact }: { contact: Contact }) {
                     </label>
                     <input
                       type="text"
-                      id="companyName"
-                      name="companyName"
-                      value={formData.companyName || ""}
+                      id="company_name"
+                      name="company_name"
+                      value={formData.company_name || ""}
                       onChange={handleChange}
-                      onFocus={() => setFocusedField("companyName")}
+                      onFocus={() => setFocusedField("company_name")}
                       onBlur={() => setFocusedField(null)}
                       className={`w-full px-4 py-4 bg-[#171410]/50 border border-[#c9a750]/30 rounded-lg text-[#e6d5c0] focus:border-[#c9a750] focus:inOutline-none transition-all duration-300 ${locale === "ar" ? "text-right" : "text-left"}`}
                       suppressHydrationWarning
