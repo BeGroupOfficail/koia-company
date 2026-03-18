@@ -2,65 +2,48 @@
 
 import { useTranslations } from "next-intl";
 import { Section } from "@/types/homeApiTypes";
+import { ShieldCheck } from "lucide-react";
 
-export default function ExecutionStandard({ sections }: { sections: Section[] }) {
+export default function ExecutionStandard({ sections }: { sections: Section }) {
   const t = useTranslations("home");
 
-  const standardsList = [
-    {
-      title: t("Std-Step-01-Title"),
-      desc: t("Std-Step-01-Desc"),
-      icon: (
-        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
-          <path d="M4 14h20M14 4v20" strokeLinecap="round" />
-          <circle cx="14" cy="14" r="3" />
-          <path d="M14 4l3 3M14 4l-3 3" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: t("Std-Step-02-Title"),
-      desc: t("Std-Step-02-Desc"),
-      icon: (
-        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
-          <circle cx="14" cy="9" r="4" />
-          <path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: t("Std-Step-03-Title"),
-      desc: t("Std-Step-03-Desc"),
-      icon: (
-        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
-          <rect x="3" y="5" width="22" height="18" rx="2" />
-          <path d="M3 10h22" />
-          <path d="M8 15h4M8 19h4" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: t("Std-Step-04-Title"),
-      desc: t("Std-Step-04-Desc"),
-      icon: (
-        <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
-          <path d="M14 3l11 19H3L14 3z" />
-          <path d="M14 11v5" strokeLinecap="round" />
-        </svg>
-      ),
-    },
-    {
-      title: t("Std-Step-05-Title"),
-      desc: t("Std-Step-05-Desc"),
-      icon: (
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
-          <circle cx="7.5" cy="15.5" r="5.5" />
-          <path d="m21 2-9.6 9.6" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="m15.5 7.5 3 3L22 7l-3-3-3.5 3.5Z" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-      ),
-    },
+  const iconList = [
+    (
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <path d="M4 14h20M14 4v20" strokeLinecap="round" />
+        <circle cx="14" cy="14" r="3" />
+        <path d="M14 4l3 3M14 4l-3 3" strokeLinecap="round" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <circle cx="14" cy="9" r="4" />
+        <path d="M6 24c0-4.4 3.6-8 8-8s8 3.6 8 8" strokeLinecap="round" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <rect x="3" y="5" width="22" height="18" rx="2" />
+        <path d="M3 10h22" />
+        <path d="M8 15h4M8 19h4" strokeLinecap="round" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 28 28" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <path d="M14 3l11 19H3L14 3z" />
+        <path d="M14 11v5" strokeLinecap="round" />
+      </svg>
+    ),
+    (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-7 h-7">
+        <circle cx="7.5" cy="15.5" r="5.5" />
+        <path d="m21 2-9.6 9.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="m15.5 7.5 3 3L22 7l-3-3-3.5 3.5Z" strokeLinecap="round" strokeLinejoin="round" />
+      </svg>
+    ),
   ];
+
+  const standardsData = sections?.standards?.[0]?.items || [];
 
   return (
     <div className="pt-24 pb-24 relative">
@@ -84,13 +67,13 @@ export default function ExecutionStandard({ sections }: { sections: Section[] })
         {/* Central Vertical Line */}
         <div className="std-timeline absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-[#c9a750] via-[#c9a750]/20 to-transparent -translate-x-1/2 pointer-events-none"></div>
 
-        {standardsList.map((item, i) => (
-          <div key={i} className={`std-item group relative flex flex-col lg:flex-row items-center lg:items-center gap-8 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
-            
+        {standardsData.map((item, i) => (
+          <div key={item.id || i} className={`std-item group relative flex flex-col lg:flex-row items-center lg:items-center gap-8 ${i % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+
             {/* Number/Icon Node */}
             <div className="relative z-10 w-16 h-16 flex-shrink-0 flex items-center justify-center rounded-2xl bg-[#171410] border-2 border-[#c9a750] shadow-[0_0_20px_rgba(201,167,80,0.2)] transition-all duration-500 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(201,167,80,0.4)]">
-               <span className="absolute -top-6 text-xs font-bold text-[#c9a750] tracking-widest">{String(i + 1).padStart(2, "0")}</span>
-               <div className="text-[#c9a750]">{item.icon}</div>
+              <span className="absolute -top-6 text-xs font-bold text-[#c9a750] tracking-widest">{String(i + 1).padStart(2, "0")}</span>
+              <div className="text-[#c9a750]">{iconList[i] || <ShieldCheck className="w-7 h-7" />}</div>
             </div>
 
             {/* Content Card */}
@@ -99,9 +82,9 @@ export default function ExecutionStandard({ sections }: { sections: Section[] })
                 {item.title}
               </h3>
               <p className="text-[#e6d5c0]/60 text-base md:text-lg text-start leading-relaxed max-w-lg mx-auto lg:mx-0">
-                {item.desc}
+                {item.description}
               </p>
-              
+
               {/* Decorative detail */}
               <div className={`mt-6 h-1 w-12 bg-[#c9a750] group-hover:w-full transition-all duration-700 mx-auto ${i % 2 !== 0 ? 'lg:ml-auto' : 'lg:mr-auto'}`}></div>
             </div>
@@ -114,3 +97,4 @@ export default function ExecutionStandard({ sections }: { sections: Section[] })
     </div>
   );
 }
+

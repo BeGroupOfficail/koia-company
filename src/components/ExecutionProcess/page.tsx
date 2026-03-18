@@ -11,7 +11,7 @@ import ExecutionStandard from "./ExecutionStandard";
 import StepByStepExecution from "./StepByStepExecution";
 import { Section } from "@/types/homeApiTypes";
 
-gsap.registerPlugin(ScrollTrigger, useGSAP);
+gsap.registerPlugin(ScrollTrigger);
 
 const Divider = () => (
   <div
@@ -20,7 +20,7 @@ const Divider = () => (
   />
 );
 
-export default function ExecutionProcess({ sections }: { sections: Section[] }) {
+export default function ExecutionProcess({ sections }: { sections: Section }) {
   const sectionRef = useRef<HTMLElement>(null);
 
   useGSAP(
@@ -83,7 +83,7 @@ export default function ExecutionProcess({ sections }: { sections: Section[] }) 
       gsap.from(".exec-card", { y: 80, opacity: 0, duration: 0.85, stagger: 0.18, ease: "power3.out", scrollTrigger: { trigger: ".exec-steps", start: "top 78%", toggleActions: "play none none reverse" } });
       gsap.from(".exec-connector", { scaleX: 0, transformOrigin: "left center", duration: 0.7, stagger: 0.18, delay: 0.3, ease: "power2.out", scrollTrigger: { trigger: ".exec-steps", start: "top 75%", toggleActions: "play none none reverse" } });
     },
-    { scope: sectionRef }
+    { scope: sectionRef, dependencies: [sections] }
   );
 
   return (

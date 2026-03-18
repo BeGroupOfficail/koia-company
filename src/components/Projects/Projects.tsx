@@ -141,7 +141,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
       <section
         id="projects"
         ref={sectionRef}
-        className="relative min-h-screen overflow-hidden lg:pb-20 pt-5 px-6 md:px-12 lg:px-20"
+        className="relative min-h-screen overflow-hidden lg:pb-20 pt-5 lg:pt-20 px-6 md:px-12 lg:px-20"
       >
         <div className="relative max-w-[1600px] mx-auto">
           {/* Header */}

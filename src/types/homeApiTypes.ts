@@ -10,7 +10,7 @@ export interface Data {
   statistics: Statistic[];
   services: Service[];
   projects: Project[];
-  sections: Section[];
+  sections: Section;
   contact: Contact;
   social_links: SocialLink[];
   seo: SEO;
@@ -81,22 +81,21 @@ export interface ProjectImage {
 
 /* ================= SECTIONS ================= */
 export interface Section {
-  id: number;
-  key: string;
-  title: string;
-  description: string;
-  sub_sections: SubSection[];
-}
-
-export interface SubSection {
-  id: number;
-  title: string;
-  description: string;
-  layout: string;
-  items: SectionItem[];
+  standards: SectionItem[];
+  step_by_step: SectionItem[];
+  quality_control: SectionItem[];
+  project_risks: SectionItem[];
 }
 
 export interface SectionItem {
+  id: number;
+  title: string;
+  description: string;
+  layout: "title_desc" | "title_only"; // can expand if more layouts exist
+  items: SectionSubItem[];
+}
+
+export interface SectionSubItem {
   id: number;
   title: string;
   description: string;
