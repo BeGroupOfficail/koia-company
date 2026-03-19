@@ -9,27 +9,27 @@ export default function RiskManagement({ sections }: { sections: Section }) {
 
   const iconList = [
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+      <svg key="icon-clock" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
         <circle cx="16" cy="16" r="11" />
         <path d="M16 9v7l4 4" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M6 6l2.5 2.5M23.5 6L26 8.5" strokeLinecap="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+      <svg key="icon-calendar" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
         <rect x="4" y="6" width="24" height="20" rx="2" />
         <path d="M4 11h24" />
         <path d="M10 16h4M10 20h4M18 16h4M18 20h4" strokeLinecap="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+      <svg key="icon-shield" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
         <path d="M16 4l10 5v9c0 5-10 10-10 10S6 23 6 18V9l10-5z" />
         <path d="M11 16l3 3 7-7" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
+      <svg key="icon-comment" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-6 h-6">
         <path d="M26 6H6a2 2 0 00-2 2v14l4-4h18a2 2 0 002-2V8a2 2 0 00-2-2z" />
         <path d="M10 13h12M10 17h7" strokeLinecap="round" />
       </svg>

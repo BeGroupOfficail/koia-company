@@ -11,25 +11,25 @@ export default function StepByStepExecution({ sections }: { sections: Section })
 
   const iconList = [
     (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+      <svg key="icon-search-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
         <circle cx="11" cy="11" r="8" />
         <path d="m21 21-4.3-4.3" strokeLinecap="round" />
         <path d="M8 11h6M11 8v6" strokeLinecap="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+      <svg key="icon-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
         <path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+      <svg key="icon-layers" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
         <path d="M12 2 2 7l10 5 10-5-10-5Z" strokeLinecap="round" strokeLinejoin="round" />
         <path d="m2 17 10 5 10-5M2 12l10 5 10-5" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
+      <svg key="icon-check-circle" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.2" className="w-9 h-9">
         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" strokeLinecap="round" strokeLinejoin="round" />
         <path d="m9 11 3 3L22 4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>

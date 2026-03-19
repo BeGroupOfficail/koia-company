@@ -9,28 +9,28 @@ export default function QualityControl({ sections }: { sections: Section }) {
 
   const iconList = [
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg key="icon-search" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
         <circle cx="14" cy="14" r="8" />
         <path d="M20 20l6 6" strokeLinecap="round" />
         <path d="M11 14l2 2 4-4" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg key="icon-chart" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
         <path d="M4 26l5-5m0 0l4 4m-4-4l7-7m0 0l4 4m-4-4l6-6" strokeLinecap="round" strokeLinejoin="round" />
         <circle cx="25" cy="7" r="3" />
         <circle cx="5" cy="27" r="2" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg key="icon-report" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
         <rect x="4" y="5" width="24" height="22" rx="2" />
         <path d="M4 11h24" />
         <path d="M10 17l2 2 4-4M10 22h12" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
     ),
     (
-      <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
+      <svg key="icon-message" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.3" className="w-5 h-5">
         <path d="M8 6h16a2 2 0 012 2v18l-4-3H8a2 2 0 01-2-2V8a2 2 0 012-2z" />
         <path d="M11 13l2 2 5-5M11 19h8" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
