@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
+        hostname: "dashboard.koia-eg.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
         hostname: "img.freepik.com",
         pathname: "/**",
       },
