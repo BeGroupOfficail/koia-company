@@ -424,7 +424,7 @@ export default function Projects({ projects }: { projects: Project[] }) {
                             {t("Scope")}
                           </h4>
                           <p className="text-[#e6d5c0] font-medium text-sm">
-                            {selectedProject.type}
+                            {selectedProject.scope}
                           </p>
                         </div>
                         <div>

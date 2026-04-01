@@ -63,6 +63,7 @@ export interface Project {
   short_desc: string;
   long_desc: string | null;
   type: string | null;
+  scope: string | null;
   date: string;
   location: string | null;
   area: string | null;
