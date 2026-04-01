@@ -482,11 +482,12 @@ export default function Projects({ projects }: { projects: Project[] }) {
                             ></span>
                           </h4>
                           <div className="p-5 rounded-2xl bg-[#c9a750]/5 border border-[#c9a750]/10">
-                            <p
-                              className={`text-[#e6d5c0] text-base leading-relaxed font-medium ${locale === "ar" ? "text-right" : "text-left"}`}
-                            >
-                              {selectedProject.long_desc}
-                            </p>
+                          <p
+                            className={`text-[#e6d5c0] text-base leading-relaxed font-medium ${
+                              locale === "ar" ? "text-right" : "text-left"
+                            }`}
+                            dangerouslySetInnerHTML={{ __html: selectedProject.long_desc }}
+                          />
                           </div>
                         </div>
                       )}
